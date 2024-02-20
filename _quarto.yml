@@ -5,9 +5,19 @@ website:
   title: "website"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - file: index.qmd
+        text: "Home"
+      - file: about.qmd
+        text: "About"
+      - file: ewf.qmd
+        text: "EWF"
+  sidebar:
+    - title: "EWF"
+      style: "docked"
+      contents:
+        - ewf.qmd
+        - ewf-uebung-1.qmd
+
 
 format:
   html:
@@ -16,6 +26,5 @@ format:
       dark: darkly
     css: styles.css
     toc: true
-
 
 
