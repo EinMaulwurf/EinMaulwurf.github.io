@@ -9,14 +9,23 @@ website:
         text: "Home"
       - file: about.qmd
         text: "About"
-      - file: ewf.qmd
+      - file: ewf/ewf.qmd
         text: "EWF"
+      - file: oekonometrische-methoden/oekonometrische-methoden.qmd
+        text: "Ökonometrische Methoden"
+      - file: statistical-machine-learning/sml.qmd
   sidebar:
     - title: "EWF"
       style: "docked"
       contents:
-        - ewf.qmd
-        - ewf-uebung-1.qmd
+        - ewf/ewf.qmd
+        - ewf/ewf-uebung-1.qmd
+    - title: "Ökon. Methoden"
+      style: "docked"
+      contents:
+        - oekonometrische-methoden/oekonometrische-methoden.qmd
+        - oekonometrische-methoden/zeitreihenanalyse.qmd
+        - oekonometrische-methoden/methoden-der-ewf.qmd
 
 
 format:

@@ -1,0 +1,16 @@
+---
+title: "EWF"
+---
+
+# Übersicht EWF
+
+# Vorlesung 1
+Lorem Ipsum
+
+# Vorlesung 2
+Lorem Ipsum
+
+# Übung 1
+Eine Übung ist [hier](ewf-uebung-1.qmd).
+
+Dies ist ein Verweis zurück zu [Home](../index.qmd)

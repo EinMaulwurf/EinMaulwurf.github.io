@@ -1,8 +1,8 @@
 {
-  "hash": "6e691616d6c0d54a1a0557c71cb90284",
+  "hash": "40beec3af379611c606df71274eb05e2",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Home\"\n---\n\n\nThis is a Quarto website.\n\nTo learn more about Quarto websites visit <https://quarto.org/docs/websites>.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 2\n```\n\n\n:::\n:::\n\n\nThis is a test! And a new one! And a third one!\n\nWe can write math in the text like $a^2 + b^2 = c^2$ or in display mode:\n$$\n\\int x\\ dx = \\frac{1}{2}x^2\n$$",
+    "markdown": "---\ntitle: \"Home\"\n---\n\n\nThis is a Quarto website.\n\nTo learn more about Quarto websites visit <https://quarto.org/docs/websites>.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 2\n```\n\n\n:::\n:::\n\n\nThis is a test! And a new one! And a third one!\n\nWe can write math in the text like $a^2 + b^2 = c^2$ or in display mode:\n$$\n\\int x\\ dx = \\frac{1}{2}x^2\n$$\n\nEinen ersten Test kann man [hier](./ewf/ewf.qmd) sehen",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

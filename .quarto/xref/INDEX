@@ -10,5 +10,23 @@
   },
   "ewf-uebung-1.qmd": {
     "ewf-uebung-1.html": "7b913ee6"
+  },
+  "ewf/ewf.qmd": {
+    "ewf.html": "5ea00a39"
+  },
+  "ewf/ewf-uebung-1.qmd": {
+    "ewf-uebung-1.html": "f600fba0"
+  },
+  "oekonometrische-methoden/zeitreihenanalyse.qmd": {
+    "zeitreihenanalyse.html": "abc52aa3"
+  },
+  "oekonometrische-methoden/oekonometrische-methoden.qmd": {
+    "oekonometrische-methoden.html": "d3f75b04"
+  },
+  "oekonometrische-methoden/methoden-der-ewf.qmd": {
+    "methoden-der-ewf.html": "9da57b6b"
+  },
+  "statistical-machine-learning/sml.qmd": {
+    "sml.html": "5cafce67"
   }
 }
