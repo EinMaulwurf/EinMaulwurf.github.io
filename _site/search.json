@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "website",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2\n\n\nThis is a test! And a new one! And a third one!"
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2\n\n\nThis is a test! And a new one! And a third one!\nWe can write math in the text like \\(a^2 + b^2 = c^2\\) or in display mode: \\[\n\\int x\\ dx = \\frac{1}{2}x^2\n\\]"
   },
   {
     "objectID": "about.html",

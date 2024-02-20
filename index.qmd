@@ -11,3 +11,8 @@ To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 ```
 
 This is a test! And a new one! And a third one!
+
+We can write math in the text like $a^2 + b^2 = c^2$ or in display mode:
+$$
+\int x\ dx = \frac{1}{2}x^2
+$$
