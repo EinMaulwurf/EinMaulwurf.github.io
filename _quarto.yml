@@ -14,6 +14,7 @@ website:
       - file: oekonometrische-methoden/oekonometrische-methoden.qmd
         text: "Ökonometrische Methoden"
       - file: statistical-machine-learning/sml.qmd
+        text: "Statistical Machine Learning"
   sidebar:
     - title: "EWF"
       style: "docked"
