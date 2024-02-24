@@ -1,5 +1,0 @@
----
-title: "Übersicht"
----
-
-Ökonometische Methoden ist ein Modul bestehend aus zwei Vorlesungen: [Zeitreihenanalyse](zeitreihenanalyse.qmd) und [Methoden der EWF](methoden-der-ewf.qmd).

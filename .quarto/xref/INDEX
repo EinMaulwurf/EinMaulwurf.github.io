@@ -34,5 +34,14 @@
   },
   "fofi/fundamentals_of_finance.qmd": {
     "fundamentals_of_finance.html": "d72d772f"
+  },
+  "fofi/household_finance.qmd": {
+    "household_finance.html": "99d28789"
+  },
+  "ewf/methoden-der-ewf.qmd": {
+    "methoden-der-ewf.html": "fd3602c6"
+  },
+  "ewf/zeitreihenanalyse.qmd": {
+    "zeitreihenanalyse.html": "7b748774"
   }
 }

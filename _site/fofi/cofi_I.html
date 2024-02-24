@@ -102,7 +102,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -120,28 +120,20 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../ewf/ewf.html"> 
-<span class="menu-text">EWF</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../oekonometrische-methoden/oekonometrische-methoden.html"> 
-<span class="menu-text">Ökonometrische Methoden</span></a>
+<span class="menu-text">EWF &amp; mehr</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../statistical-machine-learning/sml.html"> 
 <span class="menu-text">Statistical Machine Learning</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../fofi/fundamentals_of_finance.html"> 
-<span class="menu-text">Fundamentals of Finance</span></a>
+    <a class="nav-link active" href="../fofi/fundamentals_of_finance.html" aria-current="page"> 
+<span class="menu-text">Finance</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -150,10 +142,45 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../fofi/cofi_I.html">Corporate Finance 1</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../fofi/fundamentals_of_finance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fundamentals of Finance</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../fofi/cofi_I.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Corporate Finance 1</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../fofi/household_finance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Household Finance</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -168,6 +195,8 @@ window.Quarto = {
   <li><a href="#chapter-6" id="toc-chapter-6" class="nav-link" data-scroll-target="#chapter-6">Chapter 6</a></li>
   <li><a href="#chapter-8" id="toc-chapter-8" class="nav-link" data-scroll-target="#chapter-8">Chapter 8</a></li>
   <li><a href="#chapter-9" id="toc-chapter-9" class="nav-link" data-scroll-target="#chapter-9">Chapter 9</a></li>
+  <li><a href="#chapter-10" id="toc-chapter-10" class="nav-link" data-scroll-target="#chapter-10">Chapter 10</a></li>
+  <li><a href="#chapter-11" id="toc-chapter-11" class="nav-link" data-scroll-target="#chapter-11">Chapter 11</a></li>
   </ul>
 </nav>
     </div>
@@ -197,32 +226,56 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="chapter-1">Chapter 1</h2>
 <hr>
 <p><strong>Name five requirements for a BaFin license.</strong></p>
-<p>For selling shares in a stock-exchange in Germany, a company has to acquire a license from the regulator BaFin. Some requirements for that are: - Initial capital of €50,000 - Business plan and organizational structure - Names of the involved owners, information on reliability and amount of participation - Disclosure on compensation policy and practices - Information about connection between other natural or legal persons *<strong> </strong>Which involved party suggests the starting price of the share?**</p>
-<p>The investment bank managing the IPO along with the company going public suggest the starting/offer price. *<strong> </strong>What correlates with IPO intensity?**</p>
+<p>For selling shares in a stock-exchange in Germany, a company has to acquire a license from the regulator BaFin. Some requirements for that are: - Initial capital of €50,000 - Business plan and organizational structure - Names of the involved owners, information on reliability and amount of participation - Disclosure on compensation policy and practices - Information about connection between other natural or legal persons</p>
+<hr>
+<p><strong>Which involved party suggests the starting price of the share?</strong></p>
+<p>The investment bank managing the IPO along with the company going public suggest the starting/offer price.</p>
+<hr>
+<p><strong>What correlates with IPO intensity?</strong></p>
 <ul>
 <li>A countries’ education level</li>
 <li>Economic climate/freedom</li>
 <li>Degree of urbanization</li>
-<li>Whether a state has a major financial center *<strong> </strong>Describe the rend of listings in Germany since 1950. Can a similar trend be observed in the USA?**</li>
+<li>Whether a state has a major financial center</li>
 </ul>
-<p>The number of new IPOs as well as the number of public companies have been broadly declining in Germany since the 1950s. Simultaneously, the number of delisting has increased. The same holds true for the US. *<strong> </strong>Name and explain two types of special IPOs.**</p>
+<hr>
+<p><strong>Describe the rend of listings in Germany since 1950. Can a similar trend be observed in the USA?</strong></p>
+<p>The number of new IPOs as well as the number of public companies have been broadly declining in Germany since the 1950s. Simultaneously, the number of delisting has increased. The same holds true for the US.</p>
+<hr>
+<p><strong>Name and explain two types of special IPOs.</strong></p>
 <ul>
 <li>Carve-out: A parent company sells shares in its subsidiary to the public. One example is Porsche and VW.</li>
 <li>Spin-off: Separate listing of part of an existing listed company. An example is E-On and its spin-off Uniper.</li>
 <li>Direct listing: Company shares become publicly traded without a formal IPO. No new shares are sold. An example is Spotify.</li>
-<li>SPAC: A company-shell is created and raises money in an IPO. It then tries to acquire a private company. An example of a company that went public this way is the producer of electric vehicles Lucid. *<strong> </strong>Explain the difference between a carve-out and a spin-off. Provide one example for each type.**</li>
+<li>SPAC: A company-shell is created and raises money in an IPO. It then tries to acquire a private company. An example of a company that went public this way is the producer of electric vehicles Lucid.</li>
 </ul>
-<p>With both a carve-out and a spin-off, a new independent publicly listed company is created from an existing parent company. However, in a <em>carve-out</em>, new shares of a subsidiary are <em>sold</em> to the public. With a <em>spin-off</em> on the other hand, the shares are <em>distributed</em> to the existing shareholders of the parent company. *<strong> </strong>What are the different parties involved in an IPO?**</p>
-<p>The main parties in an IPO include: - Issuing company - Investment banks - Regulators - Investors ***</p>
+<hr>
+<p><strong>Explain the difference between a carve-out and a spin-off. Provide one example for each type.</strong></p>
+<p>With both a carve-out and a spin-off, a new independent publicly listed company is created from an existing parent company. However, in a <em>carve-out</em>, new shares of a subsidiary are <em>sold</em> to the public. With a <em>spin-off</em> on the other hand, the shares are <em>distributed</em> to the existing shareholders of the parent company.</p>
+<hr>
+<p><strong>What are the different parties involved in an IPO?</strong></p>
+<p>The main parties in an IPO include: - Issuing company - Investment banks - Regulators - Investors</p>
+<hr>
 </section>
 <section id="chapter-2" class="level2">
 <h2 class="anchored" data-anchor-id="chapter-2">Chapter 2</h2>
 <hr>
 <p><strong>Explain possible advantages and disadvantages of a listing.</strong></p>
 <p>Advantages: - Access to new equity - Easier access to future capital through seasoned equity offerings - Cashing out opportunity for current owners - Better image, more press - Employee compensation through stock</p>
-<p>Disadvantages: - Profit-sharing - Loss of control - Loss of confidentiality - Strict reporting and publicity requirements - IPO expenses *<strong> </strong>Costs of an IPO can be divided into “costs of going public” and “costs of being public”. How can these costs be further classified? Give an example of each.**</p>
-<p>![[ipo_costs.png]] *<strong> </strong>Name one possible advantage for employees coming with an IPO.**</p>
-<p>There is now the possibility of getting compensation in company stock (which can actually be sold – in contrast to private companies). *<strong> </strong>Set the formula for the cost of going and being public. Which factors need to be put into consideration?**</p>
+<p>Disadvantages: - Profit-sharing - Loss of control - Loss of confidentiality - Strict reporting and publicity requirements - IPO expenses</p>
+<hr>
+<p><strong>Costs of an IPO can be divided into “costs of going public” and “costs of being public”. How can these costs be further classified? Give an example of each.</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/ipo_costs.png" class="img-fluid figure-img"></p>
+<figcaption>IPO costs</figcaption>
+</figure>
+</div>
+<hr>
+<p><strong>Name one possible advantage for employees coming with an IPO.</strong></p>
+<p>There is now the possibility of getting compensation in company stock (which can actually be sold – in contrast to private companies).</p>
+<hr>
+<p><strong>Set the formula for the cost of going and being public. Which factors need to be put into consideration?</strong></p>
 <p>We pretend as if costs of going and being public occur (stretched out) every year. <span class="math display">\[
 k_e^c = \underbrace{\frac{1}{1 - \alpha f^{IPO}}}_{\text{Cost of IPO itself}} \underbrace{(k_e + l + \gamma f^{SEO})}_{\text{Costs each year}}
 \]</span> with <span class="math display">\[
@@ -241,15 +294,24 @@ k_e^c &amp;= \frac{1}{1-20\%\cdot8\%} \cdot (5\%+0.1\%+10\%\cdot2\%) \\
 &amp;= 1.016 \cdot 0.053\\
 &amp;= 5.39\%
 \end{aligned}
-\]</span> So the largest factor (with these kinds of values) is the expected return of the investor. *<strong> </strong>Why should the timing of a financial decision not matter?**</p>
-<p>According to the Modigliani/Miller theorem and the Efficient Market Hypothesis, issuing new securities via an IPO should not, on average, provide a positive net present value (NPV) opportunity for the company. This is because, in an efficient market, the new shares will be priced fairly based on all available information. *<strong> </strong>Company management intends an IPO in the medium term.<strong> </strong>What problems should be solved by an IPO?<strong> </strong>What effects (advantages/improvements) does the management expect from this step? Explain three possible advantages of a listing for this company from the context.<strong> </strong>Additionally, when would it make sense to proceed with the IPO, when not? Describe two points in time and give reasons.**</p>
+\]</span> So the largest factor (with these kinds of values) is the expected return of the investor.</p>
+<hr>
+<p><strong>Why should the timing of a financial decision not matter?</strong></p>
+<p>According to the Modigliani/Miller theorem and the Efficient Market Hypothesis, issuing new securities via an IPO should not, on average, provide a positive net present value (NPV) opportunity for the company. This is because, in an efficient market, the new shares will be priced fairly based on all available information.</p>
+<hr>
+<p><strong>Company management intends an IPO in the medium term.</strong> <strong>What problems should be solved by an IPO?</strong> <strong>What effects (advantages/improvements) does the management expect from this step? Explain three possible advantages of a listing for this company from the context.</strong> <strong>Additionally, when would it make sense to proceed with the IPO, when not? Describe two points in time and give reasons.</strong></p>
 <ul>
-<li><p>Problems solved: Raise capital for growth or expansion, provide liquidity for early investors to cash out, and increase the public profile of the company.</p></li>
-<li><p>Effects: Better access to public capital markets for future financing, use stock as acquisition currency, pay employees with stock.</p></li>
-<li><p>Timing: It makes sense to proceed with an IPO when the company has a strong financial track record and growth prospects. It doesn’t make sense when financials are poor or the market is in a downturn. *<strong> </strong>The management intends a delisting in the medium term.<strong> </strong>What problems should be solved by a delisting?<strong> </strong>What effects (advantages/improvements) does the management expect from this step?**</p></li>
-<li><p>Problems solved: Reduce regulatory burden and costs, protect proprietary information, concentrate ownership and control.</p></li>
-<li><p>Effects: Avoid public reporting requirements, maintain confidentiality of proprietary information, managers can focus on long-term goals rather than quarterly results. ***</p></li>
+<li>Problems solved: Raise capital for growth or expansion, provide liquidity for early investors to cash out, and increase the public profile of the company.</li>
+<li>Effects: Better access to public capital markets for future financing, use stock as acquisition currency, pay employees with stock.</li>
+<li>Timing: It makes sense to proceed with an IPO when the company has a strong financial track record and growth prospects. It doesn’t make sense when financials are poor or the market is in a downturn.</li>
 </ul>
+<hr>
+<p><strong>The management intends a delisting in the medium term.</strong> <strong>What problems should be solved by a delisting?</strong> <strong>What effects (advantages/improvements) does the management expect from this step?</strong></p>
+<ul>
+<li>Problems solved: Reduce regulatory burden and costs, protect proprietary information, concentrate ownership and control.</li>
+<li>Effects: Avoid public reporting requirements, maintain confidentiality of proprietary information, managers can focus on long-term goals rather than quarterly results.</li>
+</ul>
+<hr>
 </section>
 <section id="chapter-3" class="level2">
 <h2 class="anchored" data-anchor-id="chapter-3">Chapter 3</h2>
@@ -259,10 +321,16 @@ k_e^c &amp;= \frac{1}{1-20\%\cdot8\%} \cdot (5\%+0.1\%+10\%\cdot2\%) \\
 <li><strong>Diversification &amp; Bargaining Power</strong>: Public firm shareholders are better diversified, whereas large private investors have more bargaining power.</li>
 <li><strong>Investor Conviction &amp; Cost</strong>: Public companies need to convince a broader investor base, incurring costs reflected in lower share prices.</li>
 <li><strong>Public Share Pricing</strong>: IPOs allow observable share pricing, reducing outsider evaluation costs through free-riding opportunities.</li>
-<li><strong>Venture Capital Financing</strong>: Reduces information costs but demands higher returns due to less diversification and greater bargaining power, unlike public companies which face duplicated information production costs. *<strong> </strong>Why do companies experience an extension of the maturity of their debt after going public?**</li>
+<li><strong>Venture Capital Financing</strong>: Reduces information costs but demands higher returns due to less diversification and greater bargaining power, unlike public companies which face duplicated information production costs.</li>
 </ol>
-<p>Companies tend to take on debt with longer repayment periods due to improved public information and stronger bargaining positions. *<strong> </strong>What should unlisted companies consider when deciding to go public?**</p>
-<p>Issuing new shares will dilute current ownership percentages. *<strong> </strong>Why do companies in the same industry go public in clusters?</p>
+<hr>
+<p><strong>Why do companies experience an extension of the maturity of their debt after going public?</strong></p>
+<p>Companies tend to take on debt with longer repayment periods due to improved public information and stronger bargaining positions.</p>
+<hr>
+<p><strong>What should unlisted companies consider when deciding to go public?</strong></p>
+<p>Issuing new shares will dilute current ownership percentages.</p>
+<hr>
+<p>**Why do companies in the same industry go public in clusters?</p>
 <ul>
 <li>Reasons <em>external</em> to the firm and <em>external</em> to the stock market:
 <ul>
@@ -275,14 +343,19 @@ k_e^c &amp;= \frac{1}{1-20\%\cdot8\%} \cdot (5\%+0.1\%+10\%\cdot2\%) \\
 </ul></li>
 <li>Reasons <em>internal</em> to the firm:
 <ul>
-<li>Entrepreneur needs to obtain external financing to undertake a positive net present value project. *<strong> </strong>What empirical evidence for IPOs did you learn? Explain three study results.**</li>
+<li>Entrepreneur needs to obtain external financing to undertake a positive net present value project.</li>
 </ul></li>
+</ul>
+<hr>
+<p><strong>What empirical evidence for IPOs did you learn? Explain three study results.</strong></p>
+<ul>
 <li>Main factor affecting IPO probability is the market-to-book ratio of firms in the same industry.</li>
 <li>Second most important factor is firm size, as larger firms are more likely to go public.</li>
 <li>There is clustering in IPO activity over time.</li>
 <li>Companies experience a reduction in the cost of bank loans after an IPO.</li>
-<li>Founders do not bring their company public mainly for diversifying. ***</li>
+<li>Founders do not bring their company public mainly for diversifying.</li>
 </ul>
+<hr>
 </section>
 <section id="chapter-4" class="level2">
 <h2 class="anchored" data-anchor-id="chapter-4">Chapter 4</h2>
@@ -290,8 +363,12 @@ k_e^c &amp;= \frac{1}{1-20\%\cdot8\%} \cdot (5\%+0.1\%+10\%\cdot2\%) \\
 <p><strong>What is meant by “underpricing”?</strong></p>
 <p>There are large returns on the first day of trading of equity IPOs. The underpricing can thus be calculated as <span class="math display">\[
 R = \frac{P(t_1)}{P(t_0)}-1
-\]</span> where <span class="math inline">\(R\)</span> is the first day return, <span class="math inline">\(P(t_1)\)</span> is the closing price of the first trading day and <span class="math inline">\(P(t_0)\)</span> is the offering price. One could also include a market correction by subtracting the market return of the day. This however is seldom used, because market returns tend to be small compared to the IPO return. *<strong> </strong>Explain the theoretical models that try to explain the phenomenon of underpricing. When is underpricing high, and when is it low?**</p>
-<p>There is asymmetric information between all parties of an IPO (issuer, investor, underwriter). This results in the following hypothesis: - Winner’s curse: Uninformed/average investors who win bids might overpay, because informed investors will only bid on underpriced shares, leading uninformed investors to win the “bad” IPO bids. That’s why uninformed investors bid lower from the beginning. - Market feedback hypothesis: The underwriter needs market feedback for pricing an IPO. However, investors would not give this information “for free”. That’s why underwriters compensate with underpricing. - Signalling hypothesis: Issuers want to “leave a good taste” with investors for futures SEOs. Thats why they accept underpricing. *<strong> </strong>Explain two advantages and disadvantages that underpricing and overpricing can have.**</p>
+\]</span> where <span class="math inline">\(R\)</span> is the first day return, <span class="math inline">\(P(t_1)\)</span> is the closing price of the first trading day and <span class="math inline">\(P(t_0)\)</span> is the offering price. One could also include a market correction by subtracting the market return of the day. This however is seldom used, because market returns tend to be small compared to the IPO return.</p>
+<hr>
+<p><strong>Explain the theoretical models that try to explain the phenomenon of underpricing. When is underpricing high, and when is it low?</strong></p>
+<p>There is asymmetric information between all parties of an IPO (issuer, investor, underwriter). This results in the following hypothesis: - Winner’s curse: Uninformed/average investors who win bids might overpay, because informed investors will only bid on underpriced shares, leading uninformed investors to win the “bad” IPO bids. That’s why uninformed investors bid lower from the beginning. - Market feedback hypothesis: The underwriter needs market feedback for pricing an IPO. However, investors would not give this information “for free”. That’s why underwriters compensate with underpricing. - Signalling hypothesis: Issuers want to “leave a good taste” with investors for futures SEOs. Thats why they accept underpricing.</p>
+<hr>
+<p><strong>Explain two advantages and disadvantages that underpricing and overpricing can have.</strong></p>
 <table class="table">
 <colgroup>
 <col style="width: 33%">
@@ -325,26 +402,35 @@ R = \frac{P(t_1)}{P(t_0)}-1
 <li>The issuing firm might be young and have little operating history.</li>
 <li>If price is set too low, issuer leaves money on the table.</li>
 <li>If price is set too high, not all shares get sold and IPO fails.</li>
-<li>Investors would not buy IPOs from underwriter with history over overpricing. *<strong> </strong>Given the first day return <span class="math inline">\(R\)</span> and the closing price of the first day <span class="math inline">\(P(t_1)\)</span>, calculate the offer price <span class="math inline">\(P(t_0)\)</span>. Which simplification can mostly be used?**</li>
+<li>Investors would not buy IPOs from underwriter with history over overpricing.</li>
 </ul>
+<hr>
+<p><strong>Given the first day return <span class="math inline">\(R\)</span> and the closing price of the first day <span class="math inline">\(P(t_1)\)</span>, calculate the offer price <span class="math inline">\(P(t_0)\)</span>. Which simplification can mostly be used?</strong></p>
 <p>We can mostly ignore the market return of the day, because it tends to be small in comparison to the first day return. <span class="math display">\[
 \begin{aligned}
 R &amp;= \frac{P(t_1)}{P(t_0)}-1 \\
 \iff P(t_0) &amp;= \frac{P(t_1)}{R-1}
 \end{aligned}
-\]</span> *<strong> </strong>Calculate how much money is left on the table considering: number of shares sold, offer price and closing price.**</p>
+\]</span></p>
+<hr>
+<p><strong>Calculate how much money is left on the table considering: number of shares sold, offer price and closing price.</strong></p>
 <p>With the number of shares <span class="math inline">\(N\)</span>, offer price <span class="math inline">\(P(t_0)\)</span> and closing price <span class="math inline">\(P(t_1)\)</span>, we can find the money left on the table <span class="math inline">\(M\)</span>. <span class="math display">\[
 \begin{aligned}
 M &amp;= \text{actual proceeds} - \text{could-have proceeds}\\
 &amp;= N \cdot P(t_1) - N \cdot P(t_0) \\
 &amp;= N \cdot \left( P(t_1) - P(t_0) \right)
 \end{aligned}
-\]</span> *<strong> </strong>Explain the winner’s curse hypothesis and give an example on how it occurs.**</p>
+\]</span></p>
+<hr>
+<p><strong>Explain the winner’s curse hypothesis and give an example on how it occurs.</strong></p>
 <p>We assume there are two types of investors: Informed ones who know a stock’s true value and uninformed ones who don’t know that. Informed investors only buy an underpriced IPO. So, uninformed investors only win their full bid in overpriced IPOs.</p>
 <p>Example: Good IPO<sub>G</sub> (+20% initial return)and bad IPO<sub>B</sub> (-5% initial return), both offer 1500 shares. The informed investor bids for 500 shares in IPO<sub>G</sub> and 0 shares in IPO<sub>B</sub>. The uninformed investor bids for 1500 shares in both IPOs. IPO<sub>G</sub> is over-subscribed and both investors receive <span class="math inline">\(\frac{1500}{2000}=75\%\)</span> of their bid. In IPO<sub>B</sub>, the uninformed investor receives their full bid. Now the expected return for the informed investor is 20% while for the uninformed investor it is <span class="math display">\[
 E(r) = \frac{75\% \cdot 20\% + 100\% \cdot -5\%}{2}=5\%
-\]</span> That’s why underwriters create underpricing: To keep all investors happy and the IPO market alive. *<strong> </strong>What is the Market Feedback Hypothesis? Example: true price <span class="math inline">\(x\)</span>, investor bids <span class="math inline">\(y\)</span>; What is the underpricing and expected profit?**</p>
-<p>The idea behind the market feedback hypothesis is, that investors are better informed than the investment bank and needed for pricing the IPO. However, investors are not willing to provide valuable information without compensation. This compensation then comes in the form of underpricing and larger allotments (with the bookbuilding procedure). With the true price <span class="math inline">\(x\)</span> and the investor bid <span class="math inline">\(y\)</span>, we can calculate the resulting underpricing and expected profit as <span class="math inline">\(x-y\)</span>. ***</p>
+\]</span> That’s why underwriters create underpricing: To keep all investors happy and the IPO market alive.</p>
+<hr>
+<p><strong>What is the Market Feedback Hypothesis? Example: true price <span class="math inline">\(x\)</span>, investor bids <span class="math inline">\(y\)</span>; What is the underpricing and expected profit?</strong></p>
+<p>The idea behind the market feedback hypothesis is, that investors are better informed than the investment bank and needed for pricing the IPO. However, investors are not willing to provide valuable information without compensation. This compensation then comes in the form of underpricing and larger allotments (with the bookbuilding procedure). With the true price <span class="math inline">\(x\)</span> and the investor bid <span class="math inline">\(y\)</span>, we can calculate the resulting underpricing and expected profit as <span class="math inline">\(x-y\)</span>.</p>
+<hr>
 </section>
 <section id="chapter-5" class="level2">
 <h2 class="anchored" data-anchor-id="chapter-5">Chapter 5</h2>
@@ -359,22 +445,33 @@ E(r) = \frac{75\% \cdot 20\% + 100\% \cdot -5\%}{2}=5\%
 <li>Roadshow and bookbuilding</li>
 <li>Order taking, price setting</li>
 <li>Allotment</li>
-<li>Price support *<strong> </strong>Where are the shares drawn from when a young or old company goes public?**</li>
+<li>Price support</li>
 </ol>
-<p>Young companies typically sell primary shares. These are shares that are newly created. The proceeds go to the company and may be used for expansion, for example. Older companies usually sell mostly secondary shares, which come from existing shareholders. In this case, no new cash comes to the company. Usually, there is a mixture of primary and secondary shares sold at an IPO. *<strong> </strong>What empirical evidence for IPOs did you learn in the lecture?**</p>
+<hr>
+<p><strong>Where are the shares drawn from when a young or old company goes public?</strong></p>
+<p>Young companies typically sell primary shares. These are shares that are newly created. The proceeds go to the company and may be used for expansion, for example. Older companies usually sell mostly secondary shares, which come from existing shareholders. In this case, no new cash comes to the company. Usually, there is a mixture of primary and secondary shares sold at an IPO.</p>
+<hr>
+<p><strong>What empirical evidence for IPOs did you learn in the lecture?</strong></p>
 <ul>
 <li>Higher underwriter reputation leads to higher underpricing. This effect reduces when there has been a relationship between underwriter and issuer before the IPO.</li>
 <li>Social ties between underwriter and issuer (for example management is friends with bankers) impacts the outcome of an IPO.</li>
-<li>Venture capital backing reduces underpricing. *<strong> </strong>How does venture capital influence underpricing and why?**</li>
+<li>Venture capital backing reduces underpricing.</li>
 </ul>
-<p>IPOs with venture capital backing tend to have a lower underpricing. This may be due to smaller information asymmetries and a positive of the venture capital backing. *<strong> </strong>Does the underwriter play a role in underpricing? Explain.**</p>
-<p>Evidence suggests, that higher underwriter reputation leads to higher underpricing. This might be a kind of additional fee for better analyst coverage. ***</p>
+<hr>
+<p><strong>How does venture capital influence underpricing and why?</strong></p>
+<p>IPOs with venture capital backing tend to have a lower underpricing. This may be due to smaller information asymmetries and a positive of the venture capital backing.</p>
+<hr>
+<p><strong>Does the underwriter play a role in underpricing? Explain.</strong></p>
+<p>Evidence suggests, that higher underwriter reputation leads to higher underpricing. This might be a kind of additional fee for better analyst coverage.</p>
+<hr>
 </section>
 <section id="chapter-6" class="level2">
 <h2 class="anchored" data-anchor-id="chapter-6">Chapter 6</h2>
 <hr>
 <p><strong>Explain the steps of the (decoupled) bookbuilding procedure.</strong></p>
-<p>Classical Bookbuilding procedure: 1. Analyst meeeting 2. Pre-marketing phase including publishing of the price range 3. Marketing and order-taking phase 4. Publishing of the final offer price and allotting shares Decoupled Bookbuilding procedure: 1. Analyst meeting 2. Pre-marketing phase 3. Marketing phase 4. Publishing the price range 5. Order taking phase 6. Publishing final offer price and allotting shares *<strong> </strong>Name the three price-building procedures. Give two advantages and disadvantages per procedure.**</p>
+<p>Classical Bookbuilding procedure: 1. Analyst meeeting 2. Pre-marketing phase including publishing of the price range 3. Marketing and order-taking phase 4. Publishing of the final offer price and allotting shares Decoupled Bookbuilding procedure: 1. Analyst meeting 2. Pre-marketing phase 3. Marketing phase 4. Publishing the price range 5. Order taking phase 6. Publishing final offer price and allotting shares</p>
+<hr>
+<p><strong>Name the three price-building procedures. Give two advantages and disadvantages per procedure.</strong></p>
 <table class="table">
 <colgroup>
 <col style="width: 8%">
@@ -447,10 +544,17 @@ E(r) = \frac{75\% \cdot 20\% + 100\% \cdot -5\%}{2}=5\%
 <hr>
 <p><strong>What factors drive the allocation decision in the bookbuilding process</strong></p>
 <p>With the bookbuilding process, the investment bank can allocate shares at their own discretion. To really make it possible to choose which investors to allocate shares, the demand must be larger than the supply, usually by a factor of three.</p>
-<p>The investment bank then chooses the allocation based on the importance of the institution/the investor, participation in the roadshow, transparency of purchase intentions, deal and price feedback, price aggressiveness. Also, the investment bank looks to limit stock flowback, by preferring long-term investors like pension funds. At the same time, a certain trading volume after the IPO is wanted, so some allocation also goes to active trading investors. Retail investors typically get an allocation as well. *<strong> </strong>What method was mostly used before the bookbuilding and what problems occurred?**</p>
-<p>Before the bookbuilding process become popular, fixed price offerings were the defacto standard. There were some problems however: - Limited Market Feedback: With the fixed price IPO, the price is set by the issuer and investment bank without any price discovery by the market. - Mispricing Risk: Because the price is set by the issuer, it may be significantly over- or underpriced. - No check on investor sentiment: Without price bids, it’s hard to gauge investor sentiment or market conditions *<strong> </strong>Explain the allocation variations in the fixed price process.**</p>
-<p>If demand is larger than supply, shares are allocated pro rata or randomly. However, requests for large numbers of shares are typically cut back more. *<strong> </strong>There are two types of bookbuilding in allocating shares. What is their name and elaborate the difference by graphing each process.**</p>
-<p>There are the classical and the decoupled bookbuilding process. ***</p>
+<p>The investment bank then chooses the allocation based on the importance of the institution/the investor, participation in the roadshow, transparency of purchase intentions, deal and price feedback, price aggressiveness. Also, the investment bank looks to limit stock flowback, by preferring long-term investors like pension funds. At the same time, a certain trading volume after the IPO is wanted, so some allocation also goes to active trading investors. Retail investors typically get an allocation as well.</p>
+<hr>
+<p><strong>What method was mostly used before the bookbuilding and what problems occurred?</strong></p>
+<p>Before the bookbuilding process become popular, fixed price offerings were the defacto standard. There were some problems however: - Limited Market Feedback: With the fixed price IPO, the price is set by the issuer and investment bank without any price discovery by the market. - Mispricing Risk: Because the price is set by the issuer, it may be significantly over- or underpriced. - No check on investor sentiment: Without price bids, it’s hard to gauge investor sentiment or market conditions</p>
+<hr>
+<p><strong>Explain the allocation variations in the fixed price process.</strong></p>
+<p>If demand is larger than supply, shares are allocated pro rata or randomly. However, requests for large numbers of shares are typically cut back more.</p>
+<hr>
+<p><strong>There are two types of bookbuilding in allocating shares. What is their name and elaborate the difference by graphing each process.</strong></p>
+<p>There are the classical and the decoupled bookbuilding process.</p>
+<hr>
 </section>
 <section id="chapter-8" class="level2">
 <h2 class="anchored" data-anchor-id="chapter-8">Chapter 8</h2>
@@ -458,15 +562,22 @@ E(r) = \frac{75\% \cdot 20\% + 100\% \cdot -5\%}{2}=5\%
 <p><strong>Name and explain the methods of price stabilization.</strong></p>
 <ul>
 <li>Direct intervention: The underwriter directly buys shares in the open market when the price drops below the offer price, thus pushing up the share price.</li>
-<li>Greenshoe option: The underwriter initially sells more shares than it should, effectively creating a short position. When the share price drops, it can then buy back the shares it over-allocated to push up the price. *<strong> </strong>Explain how the greenshoe option can contribute to price stabilization after the IPO, depending on the price development.**</li>
+<li>Greenshoe option: The underwriter initially sells more shares than it should, effectively creating a short position. When the share price drops, it can then buy back the shares it over-allocated to push up the price.</li>
 </ul>
-<p>First, the underwriter sells excess shares, creating a short position. The following then depends on the development of the share price: - Share price drops below offer price: The underwriter can buy back the excess shares and close its short position. This creates demand and pushes up the share price. - Share price stays above offer price: The underwriter does not buy back the excess shares. For this scenario, the issuer provided secondary shares to the underwriter beforehand. *<strong> </strong>Display the “Pay off structure” of a greenshoe option.**</p>
-<p>![[greenshoe_payoff.png]] The most important takeaway: The bank always makes extra profit when the shareprice diverges from the offer price.</p>
+<hr>
+<p><strong>Explain how the greenshoe option can contribute to price stabilization after the IPO, depending on the price development.</strong></p>
+<p>First, the underwriter sells excess shares, creating a short position. The following then depends on the development of the share price: - Share price drops below offer price: The underwriter can buy back the excess shares and close its short position. This creates demand and pushes up the share price. - Share price stays above offer price: The underwriter does not buy back the excess shares. For this scenario, the issuer provided secondary shares to the underwriter beforehand.</p>
+<hr>
+<p><strong>Display the “Pay off structure” of a greenshoe option.</strong></p>
+<p><img src="./assets/greenshoe_payoff.png" class="img-fluid" alt="Grennshoe Payoff"> The most important takeaway: The bank always makes extra profit when the shareprice diverges from the offer price.</p>
 <ul>
 <li>Share price rises: The underwriter does not buy back the excess shares. It effectively created a higher IPO volume and thus makes more in commission fees.</li>
-<li>Share price falls: The underwriter closes its short position and makes money doing so. *<strong> </strong>What can be seen in the graphic? Explain the effect and provide reasons.** ![[short_covering.png]]</li>
+<li>Share price falls: The underwriter closes its short position and makes money doing so.</li>
 </ul>
-<p>The graphic shows a drop in the share price after the IPO. This might be due to overpricing or volatility and illiquidity. In this case, the underwriter can choose to stabilize the price either by buying shares directly “onto their book” or by utilizing its greenshoe option. ***</p>
+<hr>
+<p><strong>What can be seen in the graphic? Explain the effect and provide reasons.</strong> <img src="./assets/short_covering.png" class="img-fluid" alt="Short Covering"></p>
+<p>The graphic shows a drop in the share price after the IPO. This might be due to overpricing or volatility and illiquidity. In this case, the underwriter can choose to stabilize the price either by buying shares directly “onto their book” or by utilizing its greenshoe option.</p>
+<hr>
 </section>
 <section id="chapter-9" class="level2">
 <h2 class="anchored" data-anchor-id="chapter-9">Chapter 9</h2>
@@ -475,43 +586,100 @@ E(r) = \frac{75\% \cdot 20\% + 100\% \cdot -5\%}{2}=5\%
 <ul>
 <li>The cost of going public is very high: Investment banks charge high fees, and the underpricing is a cost as well.</li>
 <li>The cost of being public is high: Publicly traded companies have stricter regulatory and reporting requirements, which can incur additional costs for compliance and financial reporting.</li>
-<li>Loss of control: Going public often requires selling a significant portion of the company’s equity to outside investors. *<strong> </strong>What is a lock-up period? How long can it last?</li>
+<li>Loss of control: Going public often requires selling a significant portion of the company’s equity to outside investors.</li>
 </ul>
-<p>Lock-ups are standard arrangements in an IPO. They restrict the sale of shares by pre-issue shareholders for a certain period, often times 6 months. This is done to align the interests of current owners to the owners and a quick “cashing out” on the IPO day. *<strong> </strong>How are fees in an IPO structured?**</p>
+<hr>
+<p>**What is a lock-up period? How long can it last?</p>
+<p>Lock-ups are standard arrangements in an IPO. They restrict the sale of shares by pre-issue shareholders for a certain period, often times 6 months. This is done to align the interests of current owners to the owners and a quick “cashing out” on the IPO day.</p>
+<hr>
+<p><strong>How are fees in an IPO structured?</strong></p>
 <ul>
 <li>20% management fee to the lead manager for due diligence, prospectus, pricing, organization of syndicate, road show</li>
 <li>20% underwriting fee for placement risk and price stabilization</li>
-<li>60% selling concession for each share sold by a syndicate member *<strong> </strong>What is the cost of an IPO in relation to its volume in the US and other countries?**</li>
+<li>60% selling concession for each share sold by a syndicate member</li>
 </ul>
-<p>In the US, the cost is 7% of the IPO volume on average. In other countries, this is around 3.5%. *<strong> </strong>What are some findings concerning the lock-up period and its ending? How can it be explained?**</p>
+<hr>
+<p><strong>What is the cost of an IPO in relation to its volume in the US and other countries?</strong></p>
+<p>In the US, the cost is 7% of the IPO volume on average. In other countries, this is around 3.5%.</p>
+<hr>
+<p><strong>What are some findings concerning the lock-up period and its ending? How can it be explained?</strong></p>
 <ul>
 <li>The volume traded on the day the lock-up ends is much higher than on average (+60%) because of early investors selling their shares.</li>
 <li>The trading volume remains elevated after this day (+40%) because more shares are now available for trading.</li>
 <li>On the around the lock-up expiration, there is a significant and permanent drop in price (-2.5%).</li>
-<li>The price drop is anticipated yet still happens, mostly because of trading costs, difficulty of entering short positions because of low float and tax reasons. *<strong> </strong>Company X is significantly overpriced after three years. How does this fit into the empirical evidence?**</li>
+<li>The price drop is anticipated yet still happens, mostly because of trading costs, difficulty of entering short positions because of low float and tax reasons.</li>
 </ul>
-<p>IPOs do not have a great long run performance on average when compared to similar companies. So, Company X would be an outlier. *<strong> </strong>What does empirical evidence indicate for the long-run performance when companies choose an underwriter with less reputation?**</p>
-<p>Companies that choose less reputable underwriters for the IPO perform poorer in the long run. This might be because these companies tend to be smaller and are less likely to be backed by venture capitalists, thus having worse corporate governance. *<strong> </strong>The following characteristics of companies increase the likelihood for what? High-reputation of underwriter, larger firm size, higher ROA, high-tech industry company.**</p>
-<p>These characteristics increase the likelihood of a company being included in an index like the S&amp;P 500. <strong><em> ## Chapter 10 </em></strong> <strong>Is there clustering, underpricing and underperformance in SEOs? How does it compare to IPOs?</strong></p>
+<hr>
+<p><strong>Company X is significantly overpriced after three years. How does this fit into the empirical evidence?</strong></p>
+<p>IPOs do not have a great long run performance on average when compared to similar companies. So, Company X would be an outlier.</p>
+<hr>
+<p><strong>What does empirical evidence indicate for the long-run performance when companies choose an underwriter with less reputation?</strong></p>
+<p>Companies that choose less reputable underwriters for the IPO perform poorer in the long run. This might be because these companies tend to be smaller and are less likely to be backed by venture capitalists, thus having worse corporate governance.</p>
+<hr>
+<p><strong>The following characteristics of companies increase the likelihood for what? High-reputation of underwriter, larger firm size, higher ROA, high-tech industry company.</strong></p>
+<p>These characteristics increase the likelihood of a company being included in an index like the S&amp;P 500.</p>
+<hr>
+</section>
+<section id="chapter-10" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-10">Chapter 10</h2>
+<hr>
+<p><strong>Is there clustering, underpricing and underperformance in SEOs? How does it compare to IPOs?</strong></p>
 <ul>
 <li>Yes, clustering / cycles also exist for SEOs. However, they are not as pronounced and shorter as for IPOs.</li>
 <li>Yes, there is underpricing with SEOs, around 2,5%. This is way less then the underpricing found for IPOs. The underpricing tends to higher for the first SEO a company does.</li>
-<li>There is also underperformance after an SEO. In contrast to IPOs though, this underperformance does not vanish when controlling for size. This might be due to the different capital structure of firms that did an SEO and one that did not. *<strong> </strong>With the help of a diagram, show how to make money with seasoned equity offerings.**</li>
+<li>There is also underperformance after an SEO. In contrast to IPOs though, this underperformance does not vanish when controlling for size. This might be due to the different capital structure of firms that did an SEO and one that did not.</li>
 </ul>
-<p>![[seo_short_position.png]] 1. Sell the stock short when an SEO is announced. 2. Wait for the stock to drop. 3. Cover the short position. It will typically reach its lowest level at the offer day. *<strong> </strong>What are the consequences of a seasoned equity offering?**</p>
-<p>There are multiple consequences of an SEO: - Lower leverage: With an SEO, a company raises new equity thus reducing the equity-to-equity ratio or leverage. This makes the company a less risky investment. - Higher liquidity in the stock market: The additional shares lead to more shares circulating in the market and therefore a higher liquidity. - New cash: A company’s management needs a good story what they will do with the new cash they have on hand. Ideally, the cash is used for profitable projects. *<strong> </strong>How can capital increases be distinguished? What are the differences?**</p>
-<p>Capital increases can be distinguished by the means of the increase: - Capital increase in return for cash - Capital increase in the return for stock - Capital increase from the company’s reserves <strong><em> ## Chapter 11 </em></strong> **What is “underperforming” and how do you determine that in IPOs/SEOs?</p>
+<hr>
+<p><strong>With the help of a diagram, show how to make money with seasoned equity offerings.</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/seo_short_position.png" class="img-fluid figure-img"></p>
+<figcaption>SEO short positions</figcaption>
+</figure>
+</div>
+<ol type="1">
+<li>Sell the stock short when an SEO is announced.</li>
+<li>Wait for the stock to drop.</li>
+<li>Cover the short position. It will typically reach its lowest level at the offer day.</li>
+</ol>
+<hr>
+<p><strong>What are the consequences of a seasoned equity offering?</strong></p>
+<p>There are multiple consequences of an SEO: - Lower leverage: With an SEO, a company raises new equity thus reducing the equity-to-equity ratio or leverage. This makes the company a less risky investment. - Higher liquidity in the stock market: The additional shares lead to more shares circulating in the market and therefore a higher liquidity. - New cash: A company’s management needs a good story what they will do with the new cash they have on hand. Ideally, the cash is used for profitable projects.</p>
+<hr>
+<p><strong>How can capital increases be distinguished? What are the differences?</strong></p>
+<p>Capital increases can be distinguished by the means of the increase: - Capital increase in return for cash - Capital increase in the return for stock - Capital increase from the company’s reserves</p>
+<hr>
+</section>
+<section id="chapter-11" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-11">Chapter 11</h2>
+<hr>
+<p>**What is “underperforming” and how do you determine that in IPOs/SEOs?</p>
 <p>Underperformance means that a firm which did an IPO/SEO perforce worse than the broad market or a specific subset over a long time period, typically measured between 1 to 5 years. It is typically calculated using the Buy-And-Hold-Abnormal-Return of stock <span class="math inline">\(i\)</span> up to month <span class="math inline">\(M\)</span> after an IPO/SEO: <span class="math display">\[
 BHAR_{i,M} = \left( \prod_{m=1}^{M} (1+r_{i,m}) -1 \right) - \left( \prod_{m=1}^{M} (1+ E[r_{i,m}]) -1 \right)
-\]</span> The expected return <span class="math inline">\(E[r_{i,m}]\)</span> of stock <span class="math inline">\(i\)</span> in month <span class="math inline">\(m\)</span> can be approximated by the return of the broader market or a subset of matching firms in that month. *<strong> </strong>What happens when an equity issuer lowers its leverage?**</p>
-<p>When an issuer raises equity in using a SEO it automatically reduces the leverage. This in turn reduces the risk of default. This reduction in risk will result in a lower risk premium in the stock market. *<strong> </strong>Why does the risk have to decrease when investments are financed through equity?**</p>
+\]</span> The expected return <span class="math inline">\(E[r_{i,m}]\)</span> of stock <span class="math inline">\(i\)</span> in month <span class="math inline">\(m\)</span> can be approximated by the return of the broader market or a subset of matching firms in that month.</p>
+<hr>
+<p><strong>What happens when an equity issuer lowers its leverage?</strong></p>
+<p>When an issuer raises equity in using a SEO it automatically reduces the leverage. This in turn reduces the risk of default. This reduction in risk will result in a lower risk premium in the stock market.</p>
+<hr>
+<p><strong>Why does the risk have to decrease when investments are financed through equity?</strong></p>
 <p>If a capital investment is financed by equity, then risk must decrease because investment in effect extinguishes the risky growth options.</p>
-<p>By allocating capital to a specific investment, the company is effectively closing the door on some of the other growth options it may have had. Those other options, being uncertain and yet-to-be-realized, carry risk. Committing to a known investment eliminates the uncertainty associated with those unrealized growth options. *<strong> </strong>What does management do if the share price appears to be too high?**</p>
-<p>When the stock is overvalued (from the managements perspective), it can choose to sell new shares to profit from this. The opposite would be buying back shares when the stock is undervalued. *<strong> </strong>Outline investors’ reaction to negative announcements.**</p>
-<p>After a SEO announcement, the stock price drop around 2.5% in the following two days. This can either be attributed directly to the SEO or it could just mean that new information has entered the market and impacted the stock price. *<strong> </strong>Name three securities involved in the OTC transactions.**</p>
-<p>Securities involved in a PIPE deal can be - common stock - preferred stock - convertible preferred stock - convertible debt - other types of equity *<strong> </strong>Why can’t investors cover their short positions with shares from the PIPE transaction?**</p>
-<p>Usually, investors hedge their PIPE investment by short-selling. However, the investor cannot cover its short positions with the actual shares received in the PIPE transaction. Shares to cover short-sales must have been sold when the short-sale was made. *<strong> </strong>Present the main benefits for an issuer when using PIPEs**</p>
-<p>PIPE (Private Investment in Public Equity) are a means of selling shares to an investor over the counter. The main benefits to a “normal” SEO are - It’s quicker than a SEO - Small issues/transactions are possible, that would not be worth it with a SEO - Short-term stock market reactions are positive - Flexibility: Various contract terms can be agreed on - The shares can be sold either at a discount or a markup ***</p>
+<p>By allocating capital to a specific investment, the company is effectively closing the door on some of the other growth options it may have had. Those other options, being uncertain and yet-to-be-realized, carry risk. Committing to a known investment eliminates the uncertainty associated with those unrealized growth options.</p>
+<hr>
+<p><strong>What does management do if the share price appears to be too high?</strong></p>
+<p>When the stock is overvalued (from the managements perspective), it can choose to sell new shares to profit from this. The opposite would be buying back shares when the stock is undervalued.</p>
+<hr>
+<p><strong>Outline investors’ reaction to negative announcements.</strong></p>
+<p>After a SEO announcement, the stock price drop around 2.5% in the following two days. This can either be attributed directly to the SEO or it could just mean that new information has entered the market and impacted the stock price.</p>
+<hr>
+<p><strong>Name three securities involved in the OTC transactions.</strong></p>
+<p>Securities involved in a PIPE deal can be - common stock - preferred stock - convertible preferred stock - convertible debt - other types of equity</p>
+<hr>
+<p><strong>Why can’t investors cover their short positions with shares from the PIPE transaction?</strong></p>
+<p>Usually, investors hedge their PIPE investment by short-selling. However, the investor cannot cover its short positions with the actual shares received in the PIPE transaction. Shares to cover short-sales must have been sold when the short-sale was made.</p>
+<hr>
+<p><strong>Present the main benefits for an issuer when using PIPEs</strong></p>
+<p>PIPE (Private Investment in Public Equity) are a means of selling shares to an investor over the counter. The main benefits to a “normal” SEO are - It’s quicker than a SEO - Small issues/transactions are possible, that would not be worth it with a SEO - Short-term stock market reactions are positive - Flexibility: Various contract terms can be agreed on - The shares can be sold either at a discount or a markup</p>
+<hr>
 
 
 </section>

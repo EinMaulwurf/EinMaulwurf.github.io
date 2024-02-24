@@ -5,34 +5,31 @@ website:
   title: "website"
   navbar:
     left:
-      - file: index.qmd
-        text: "Home"
+      #- file: index.qmd
+      #  text: "Home"
       - file: about.qmd
         text: "About"
       - file: ewf/ewf.qmd
-        text: "EWF"
-      - file: oekonometrische-methoden/oekonometrische-methoden.qmd
-        text: "Ökonometrische Methoden"
+        text: "EWF & mehr"
       - file: statistical-machine-learning/sml.qmd
         text: "Statistical Machine Learning"
       - file: fofi/fundamentals_of_finance.qmd
+        text: "Finance"
   sidebar:
     - title: "EWF"
       style: "docked"
       contents:
         - ewf/ewf.qmd
         - ewf/ewf-uebung-1.qmd
-    - title: "Ökon. Methoden"
-      style: "docked"
-      contents:
-        - oekonometrische-methoden/oekonometrische-methoden.qmd
-        - oekonometrische-methoden/zeitreihenanalyse.qmd
-        - oekonometrische-methoden/methoden-der-ewf.qmd
+        - ewf/oekonometrische-methoden.qmd
+        - ewf/zeitreihenanalyse.qmd
+        - ewf/methoden-der-ewf.qmd
     - title: "FoFi"
       style: "docked"
       contents: 
         - fofi/fundamentals_of_finance.qmd
-        - cofi_I.qmd
+        - fofi/cofi_I.qmd
+        - fofi/household_finance.qmd
 
 format:
   html:

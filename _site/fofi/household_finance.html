@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>website - EWF Übung 1</title>
+<title>website - Household Finance</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -103,6 +69,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -129,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../ewf/ewf.html" aria-current="page"> 
+    <a class="nav-link" href="../ewf/ewf.html"> 
 <span class="menu-text">EWF &amp; mehr</span></a>
   </li>  
   <li class="nav-item">
@@ -137,7 +132,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Statistical Machine Learning</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../fofi/fundamentals_of_finance.html"> 
+    <a class="nav-link active" href="../fofi/fundamentals_of_finance.html" aria-current="page"> 
 <span class="menu-text">Finance</span></a>
   </li>  
 </ul>
@@ -152,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ewf/ewf-uebung-1.html">EWF Übung 1</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../fofi/household_finance.html">Household Finance</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -166,29 +161,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ewf/ewf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">EWF</span></a>
+  <a href="../fofi/fundamentals_of_finance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fundamentals of Finance</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ewf/ewf-uebung-1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">EWF Übung 1</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
- <span class="menu-text">ewf/oekonometrische-methoden.qmd</span>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ewf/zeitreihenanalyse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Zeitreihenanalyse</span></a>
+  <a href="../fofi/cofi_I.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Corporate Finance 1</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ewf/methoden-der-ewf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Methoden der EWF</span></a>
+  <a href="../fofi/household_finance.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Household Finance</span></a>
   </div>
 </li>
     </ul>
@@ -201,9 +187,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#heteroskedastizität" id="toc-heteroskedastizität" class="nav-link active" data-scroll-target="#heteroskedastizität">Heteroskedastizität</a></li>
-  <li><a href="#autokorrelation-der-residuen" id="toc-autokorrelation-der-residuen" class="nav-link" data-scroll-target="#autokorrelation-der-residuen">Autokorrelation der Residuen</a></li>
-  <li><a href="#keine-autokorrelation-zum-vergleich" id="toc-keine-autokorrelation-zum-vergleich" class="nav-link" data-scroll-target="#keine-autokorrelation-zum-vergleich">Keine Autokorrelation (zum Vergleich)</a></li>
+  <li><a href="#derivatebewertung" id="toc-derivatebewertung" class="nav-link active" data-scroll-target="#derivatebewertung">Derivatebewertung</a></li>
+  <li><a href="#kapitel-1" id="toc-kapitel-1" class="nav-link" data-scroll-target="#kapitel-1">Kapitel 1</a></li>
+  <li><a href="#kapitel-2" id="toc-kapitel-2" class="nav-link" data-scroll-target="#kapitel-2">Kapitel 2</a></li>
+  <li><a href="#kapitel-3" id="toc-kapitel-3" class="nav-link" data-scroll-target="#kapitel-3">Kapitel 3</a></li>
+  <li><a href="#kapitel-4" id="toc-kapitel-4" class="nav-link" data-scroll-target="#kapitel-4">Kapitel 4</a></li>
   </ul>
 </nav>
     </div>
@@ -212,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">EWF Übung 1</h1>
+<h1 class="title">Household Finance</h1>
 </div>
 
 
@@ -229,74 +217,214 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="heteroskedastizität" class="level1">
-<h1>Heteroskedastizität</h1>
-<p>Ist dies und das</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">10</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> .<span class="dv">5</span> <span class="sc">*</span> x)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>x <span class="sc">+</span> u</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="ewf-uebung-1_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="derivatebewertung" class="level2">
+<h2 class="anchored" data-anchor-id="derivatebewertung">Derivatebewertung</h2>
+<hr>
+<p><strong>Wie kann man den Preisverlauf einer Aktie oder eines anderen Wertpapiers modellieren?</strong></p>
+<p>Der Wert einer Aktie im Zeitpunkt <span class="math inline">\(t\)</span> sei <span class="math inline">\(S\)</span>. Dann ist der Wert im Zeitpunkt <span class="math inline">\(t+dt\)</span> gleich <span class="math inline">\(S+dS\)</span>. <span class="math inline">\(dS\)</span> kann als stochastischer Prozess modelliert werden: <span class="math display">\[
+\begin{aligned}
+dS &amp;= \mu S \cdot dt + \sigma S \cdot dW \\
+\text{mit }W&amp;\sim N(0, t) \\
+dW &amp;\sim N(0, \sqrt{t})
+\end{aligned}
+\]</span> <span class="math inline">\(\mu\)</span> ist der Drift bzw. die erwartete Rendite der Aktie und <span class="math inline">\(\sigma\)</span> die Standardabweichung. Führt man damit eine Monte-Carlo Simulation durch, d.h. man zieht verschiedene Werte für <span class="math inline">\(dW\)</span>, erhält man beispielsweise folgende Pfade. Ein Pfad wurde beispielhaft rot eingefärbt. <img src="./assets/brownian-motion.png" class="img-fluid" alt="Brownian Motion"></p>
+<hr>
+<p><strong>Wie wird der Payoff einer europäischen Call-Option bestimmt?</strong></p>
+<p>Der Payoff ergibt sich als <span class="math inline">\((S(T)-K)^+\)</span>. Dabei ist <span class="math inline">\(S(T)\)</span> der Wert des Underlyings bzw. der Aktie am Tag der Fälligkeit <span class="math inline">\(T\)</span> und <span class="math inline">\(K\)</span> ist der vorher vereinbarte Strike Preis. Wenn <span class="math inline">\(S(T)\)</span> kleiner ist als <span class="math inline">\(K\)</span>, so gibt es keinen Payoff und die Option ist wertlos. Liegt <span class="math inline">\(S(T)\)</span> über <span class="math inline">\(K\)</span>, so ist die Differenz der Payoff.</p>
+<hr>
+<p><strong>Wie kann man ein Portfolio bilden, das das Verhalten einer europäischen Option über einen bestimmten Zeitraum (hier eine Periode des Binomialbaums) perfekt nachbildet, wenn man nur die Aktie und ein (risikoloses) Geldkonto verwendet?</strong></p>
+<p>Man befindet sich am Anfang einer Periode und der Aktienkurs im Wert von <span class="math inline">\(S\)</span> kann sich in einem der beiden Zustände entwickeln: <span class="math inline">\(S_u = u S\)</span> oder <span class="math inline">\(S_d = d S\)</span>.</p>
+<p>Bezeichnen wir <span class="math inline">\(\Pi\)</span> als ein solches Portfolio. <span class="math inline">\(\Pi\)</span> bestehe aus <span class="math inline">\(\alpha\)</span> Aktien der Aktie und <span class="math inline">\(\beta\)</span> in bar. Sowohl <span class="math inline">\(\alpha\)</span> als auch <span class="math inline">\(\beta\)</span> können positiv oder negativ sein, je nachdem, ob man Aktien besitzt/verkauft oder Bargeld leiht/verleiht. Der Wert von <span class="math inline">\(\Pi\)</span> ist also <span class="math display">\[\Pi = \alpha S + \beta\]</span> Um <span class="math inline">\(\alpha\)</span> und <span class="math inline">\(\beta\)</span> zu bestimmen, nehmen wir an, dass die Option am Ende einer Periode <span class="math inline">\(V_u\)</span> im Aufwärtszustand und <span class="math inline">\(V_d\)</span> im Abwärtszustand wert ist. Da wir wollen, dass sich unser Portfolio repliziert, wollen wir, dass sich sein Wert <span class="math inline">\(\Pi\)</span> zu genau denselben Zuständen entwickelt, d.h. <span class="math inline">\(\Pi_u = V_u\)</span> und <span class="math inline">\(\Pi_d = V_d\)</span>. Daraus ergeben sich zwei Gleichungen: <span class="math display">\[
+\begin{aligned}
+\Pi_u &amp;= \alpha S_u + \beta (1 + R) = V_u \\
+\Pi_d &amp;= \alpha S_d + \beta (1 + R) = V_d
+\end{aligned}
+\]</span> - Die Aktienkomponente des Portfolios <span class="math inline">\(\Pi\)</span> hat sich von <span class="math inline">\(\alpha S\)</span> zu <span class="math inline">\(\alpha S_u\)</span> oder <span class="math inline">\(\alpha S_d\)</span> entwickelt, weil sich der Aktienkurs entwickelt hat. - Der Bargeldbetrag <span class="math inline">\(\beta\)</span>, der zu Beginn der Periode geliehen/verliehen wurde, hat uns Zinsen gekostet/verdient, daher der Faktor <span class="math inline">\(1+R\)</span>.</p>
+<p>Löst man diese zwei Gleichungen für die zwei Unbekannten <span class="math inline">\(\alpha\)</span> und <span class="math inline">\(\beta\)</span> erhält man: <span class="math display">\[
+\begin{aligned}
+\alpha &amp;= \frac{V_u - V_d}{S_u-S_d} \\
+\beta &amp;= \frac{1}{1+R} \frac{u V_d - d V_u}{(u-d)}
+\end{aligned}
+\]</span> Daraus ergibt sich die Anzahl der Aktien (<span class="math inline">\(\alpha\)</span>), die man kaufen/verkaufen müsste, und die Anzahl der Barmittel (<span class="math inline">\(\beta\)</span>), die man leihen/verleihen müsste, um die Option perfekt zu replizieren.</p>
+<p>Erklärung von <a href="https://quant.stackexchange.com/questions/25094/replication-strategy-of-european-call-option">Stack Exchange – Quantitative Finance</a></p>
+<hr>
 </section>
-<section id="autokorrelation-der-residuen" class="level1">
-<h1>Autokorrelation der Residuen</h1>
-<p>Bli Bla Blup</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">10</span>, <span class="at">length.out =</span> n)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>u[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n) {</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  u[i] <span class="ot">&lt;-</span> <span class="fl">0.8</span><span class="sc">*</span>u[i<span class="dv">-1</span>] <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>x <span class="sc">+</span> u</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(x,y) <span class="sc">%&gt;%</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x ,y))<span class="sc">+</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">1</span>, <span class="at">slope =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="ewf-uebung-1_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="kapitel-1" class="level2">
+<h2 class="anchored" data-anchor-id="kapitel-1">Kapitel 1</h2>
+<hr>
+<p><strong>Wie sieht das CAPM aus?</strong></p>
+<p>Das CAPM Modell sieht wie folgt aus: <span class="math display">\[
+\begin{aligned}
+E(R_i) &amp;= R_f + \left(E[R_M] - R_f \right)\cdot \beta_i \\
+\text{mit }\beta_i &amp;= \frac{cov(R_i, R_M)}{var(R_M)}
+\end{aligned}
+\]</span> <span class="math inline">\(R_f\)</span> steht dabei für den risikofreien Zinssatz/Rendite<span class="math inline">\(, R_i\)</span> steht für die Rendite eines einzelnen Wertpapiers <span class="math inline">\(i\)</span> und <span class="math inline">\(R_M\)</span> für die Marktrendite. Die Differenz aus der Marktrendite und dem risikofreien Zins wird <em>Marktrisikoprämie</em> genannt. Das <span class="math inline">\(\beta_i\)</span> beschreibt die Volatilität bzw. das Risiko von <span class="math inline">\(i\)</span> im Vergleich zum Markt. Die erwartete Rendite von Wertpapier <span class="math inline">\(i\)</span> also die risikofreie Rendite plus einer Risikoprämie, welche <span class="math inline">\(\beta_i\)</span> mal Differenz aus <span class="math inline">\(E[R_M]\)</span> und <span class="math inline">\(R_f\)</span> ist.</p>
+<p>Ist die Volatilität von <span class="math inline">\(i\)</span> also gleich der des Marktes, ergibt sich als erwartete Rendite die (erwartete) Marktrendite: <span class="math display">\[
+\begin{aligned}
+E(R_i) &amp;= R_f + \left(E[R_M] - R_f \right)\cdot 1 \\
+&amp;= R_f + E[R_M] - R_f \\
+&amp;= E[R_M]
+\end{aligned}
+\]</span> Ist das Risiko von <span class="math inline">\(i\)</span> geringer (<span class="math inline">\(\beta_i&lt;1\)</span>), dann liegt die erwartete Rendite unter der des Marktes.</p>
+<hr>
+<p><strong>Welche Implikationen des CAPM lassen sich testen?</strong></p>
+<ol type="1">
+<li>Beziehung zwischen erwarteter Rendite und Risiko ist linear.</li>
+<li><span class="math inline">\(\beta_i\)</span> ist vollständiges Maß für Risiko.</li>
+<li>Höheres Risiko ist mit höherer erwarteter Rendite verbunden.</li>
+</ol>
+<hr>
+<p><strong>Wie haben Fama/MacBeth das CAPM getestet? Erklären Sie mögliche Probleme der Testweise.</strong></p>
+<p><em>Folie 36-39</em> Fama/MacBeth haben das CAPM mit monatlichen Aktienkursdaten aller an der NYSE notierten Aktien von 1926-1968 getestet. Sie haben die Betas der Aktien über 4 Jahre geschätzt, dann in aufsteigender Reihenfolge 20 Portfolios gebildet, die Betas innerhalb der Portfolios gemittelt und schließlich das CAPM über 4 Jahre mit den durchschnittlichen Betas getestet. Probleme dieser Testweise sind möglicherweise Heteroskedastizität, Intervalling und fehlende Stationarität der Renditen.</p>
+<p><a href="https://www.simtrade.fr/blog_simtrade/fama-macbeth-two-step-regression-method/">Hier</a> ist ein anschaulicher Blogeintrag dazu. Diese Vorgehen bringt jedoch empirische Schwierigkeiten mit sich, insbesondere Heteroskedastizität, Intervalling und fehlende Stationaritä der Rendite-Zeitreihen.</p>
+<hr>
+<p><strong>Was ist die akademische Sicht auf spekulative Blasen?</strong></p>
+<p><em>Folie 50-66</em> Die akademische Sicht ist, dass es keine eindeutigen Nachweise für das Vorliegen spekulativer Blasen gibt. Starke Preisrückgänge werden oft als rationale Reaktion auf Änderungen bei Fundamentaldaten interpretiert. Ökonometrische Studien zeigen zwar kurzfristige Abweichungen von Fundamentalwerten, die als platzende Blasen gedeutet werden könnten, aber der Nachweis bleibt schwierig.</p>
+<hr>
+<p><strong>Die experimentelle Studie von Caginalp, Porter und Smith (2000) untersucht, ob an Kapitalmärkten spekulative Blasen entstehen können. Erläutern Sie kurz den Experimentaufbau und skizzieren Sie dann die zentralen Ergebnisse für unterschiedliche Teilnehmergruppen.</strong></p>
+<p><em>Folie 67-68</em> Caginalp et al.&nbsp;haben in einem Experiment mit 15 Handelsperioden für ein Dividendenpapier ohne Restwert spekulative Blasen in Abhängigkeit von der Zusammensetzung der Teilnehmergruppen untersucht. Bei rein rationalen Teilnehmern entstand keine Blase. Bei teilnehmenden CEOs und Undergraduates jedoch entstanden im Laufe des Experiments Blasen, die zum Ende hin platzten.</p>
+<hr>
+<p><strong>Welche Kursreaktionen wurden auf die Ausstrahlung von CEO Interviews im Amerikanischen Nachrichtenkanal CNBC beobachtet? Wie lassen sich diese Kursreaktionen erklären?</strong></p>
+<p><em>Folie 71-80</em> Bei CEO-Interviews auf CNBC wurden signifikant positive Überrenditen am Tag der Ausstrahlung sowie deutlich erhöhte Handelsvolumina beobachtet. Dies lässt darauf schließen, dass in den Interviews wohl neue Informationen vermittelt werden, die noch nicht im Aktienkurs enthalten waren.</p>
+<hr>
 </section>
-<section id="keine-autokorrelation-zum-vergleich" class="level1">
-<h1>Keine Autokorrelation (zum Vergleich)</h1>
-<p>Und noch was cooles :)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">10</span>, <span class="at">length.out =</span> n)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">3</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>x <span class="sc">+</span> u</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(x,y) <span class="sc">%&gt;%</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y))<span class="sc">+</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">1</span>, <span class="at">slope =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
+<section id="kapitel-2" class="level2">
+<h2 class="anchored" data-anchor-id="kapitel-2">Kapitel 2</h2>
+<hr>
+<p><strong>Was ist die Entscheidungsgrundlage der Erwartungsnutzentheorie?</strong></p>
+<p><em>Folie 7</em>-21 Die Entscheidungsgrundlage der Erwartungsnutzentheorie ist ein Axiomensystem zur Ableitung einer Präferenz. Wenn die Präferenz eines Entscheiders die Axiome der vollständigen Ordnung, der Stetigkeit und bei riskanten Alternativen der Unabhängigkeit erfüllt, dann existiert eine Nutzenfunktion, deren Erwartungsnutzen die Präferenz abbildet.</p>
+<hr>
+<p><strong>Nennen Sie die drei der Erwartungsnutzentheorie zu Grunde liegenden Axiome. Erklären Sie diese anhand eines Beispiels.</strong></p>
+<p><em>Folie 10-13</em> Die drei der Erwartungsnutzentheorie zugrunde liegenden Axiome sind:</p>
+<ul>
+<li>Das Axiom der vollständigen Ordnung besagt, dass für jedes Lotteriepaar eine eindeutige Präferenzrelation gilt (entweder A &lt; B oder B &lt; A) und diese Präferenz transitiv ist (aus A &lt; B und B &lt; C folgt A &lt; C).</li>
+<li>Das Axiom der Stetigkeit besagt, dass sich für zwei Lotterien durch Mischen eine dritte Lotterie konstruieren lässt, die genau zwischen den beiden anderen liegt.</li>
+<li>Das Axiom der Unabhängigkeit (Substitution) besagt, dass die Präferenz zwischen zwei Lotterien unabhängig von einer dritten Lotterie ist.</li>
+</ul>
+<hr>
+<p><strong>Skizzieren Sie die Nutzenfunktionen für risikofreudige, risikoneutrale und risikoscheue Anleger und begründen Sie die Lage der Kurven mit Bezug auf das Risikopotential.</strong></p>
+<p><em>Folie 15-21</em> Die Nutzenfunktion für einen risikofreudigen Anleger ist konvex, da er das Risiko einer Lotterie positiv bewertet. Die Nutzenfunktion eines risikoneutralen Anlegers ist linear, da er dem Risiko einer Lotterie gleichgültig gegenübersteht. Die Nutzenfunktion eines risikoscheuen Anlegers ist konkav, da er das Risiko einer Lotterie negativ bewertet.</p>
+<p>Für die Lotterie gilt <span class="math inline">\(RP(a) = E(a) - SÄ(a)\)</span>, wobei <span class="math inline">\(RP\)</span> die Risikoprämie, <span class="math inline">\(E\)</span> der Erwartungswert und <span class="math inline">\(SÄ\)</span> das Sicherheitsäquivalent ist.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Nutzenfunktion</th>
+<th><span class="math inline">\(RP\)</span></th>
+<th>Risikoeinstellung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>linear</td>
+<td><span class="math inline">\(=0\)</span></td>
+<td>risikoneutral</td>
+</tr>
+<tr class="even">
+<td>konkav</td>
+<td><span class="math inline">\(&gt;0\)</span></td>
+<td>risikoscheu</td>
+</tr>
+<tr class="odd">
+<td>konvex</td>
+<td><span class="math inline">\(&lt;0\)</span></td>
+<td>risikofreudig</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>Die theoretische Fundierung der Behavioral Finance basiert auf der Prospect Theory, die in drei wesentlichen Elementen von der klassischen Entscheidungstheorie abweicht. Beschreiben Sie diese drei Elemente</strong></p>
+<p><em>Folie 57-58</em> Die Prospect Theory weicht von der klassischen Entscheidungstheorie in drei wesentlichen Punkten ab:</p>
+<ol type="1">
+<li>Editing Phase: Der Entscheider editiert die Alternativen vor der Bewertung durch Coding, Segregation, Combination etc.</li>
+<li>Wertfunktion: Die Wertfunktion ist konkav im Gewinnbereich und konvex im Verlustbereich.</li>
+<li>Wahrscheinlichkeitsgewichtung: Entscheider ordnen Wahrscheinlichkeiten ein subjektives Gewicht zu.</li>
+</ol>
+<hr>
+<p><strong>Wie sieht die Nutzenfunktion in der Prospect Theory aus?</strong></p>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ewf-uebung-1_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/8/85/Loss_Aversion.png" class="img-fluid figure-img"></p>
+<figcaption>utility-function</figcaption>
 </figure>
 </div>
-</div>
-</div>
+<hr>
+<p><strong>Das Unternehmen XY fürchtet eine feindliche Übernahme, welche mit einer Wahrscheinlichkeit von 2% eintritt. Daher entwickelt es einen HTO-Indikator, der die Börsendaten analysiert und warnt, wenn ein feindlicher Übernahmeversuch bevorsteht. Allerdings erkennt der Indikator 8% der geplanten Übernahmen nicht und warnt in 5% der Fälle, in denen gar keine Übernahme geplant ist. Das Unternehmen möchte sich sicher sein, dass mit einer Wahrscheinlichkeit von mindestens 80% tatsächlich eine Übernahme bevorsteht, wenn der Indikator ein Warnsignal gibt. Erfüllt der entwickelte Indikator diese Bedingung?</strong></p>
+<p><em>Folie 22-36</em> Zuerst schreiben wir auf, was aus der Aufgabenstellung bekannt ist. <span class="math inline">\(Ü\)</span> steht für eine Übernahme und <span class="math inline">\(W\)</span> für eine Warnung. <span class="math display">\[
+\begin{aligned}
+p(Ü)&amp;=0.02 \Rightarrow p(\overline{Ü})=0.98 \\
+p(\overline{W}|Ü)&amp;=0.08 \Rightarrow p(W|Ü)=0.92\\
+p(W|\overline{Ü})&amp;=0.05 \Rightarrow p(\overline{W}|\overline{Ü})=0.95\\
+\end{aligned}
+\]</span> Gesucht ist <span class="math inline">\(p(Ü|W)\)</span>.</p>
+<p>Zum Beantworten dieser Frage benutzen wir den Satz von Bayes: <span class="math display">\[
+\begin{aligned}
+p(a|b) &amp;= \frac{p(b|a) \cdot p(a)}{p(b)} \\
+\text{mit } p(b)&amp;=p(b|a)\cdot p(a) + p(b|\overline{a})\cdot p(\overline{a})
+\end{aligned}
+\]</span> Zuerst müssen wir noch die totale Wahrscheinlichkeit <span class="math inline">\(p(W)\)</span> berechnen: <span class="math display">\[
+\begin{aligned}
+p(W)&amp;=p(W|Ü)\cdot p(Ü) + p(W|\overline{Ü})\cdot p(\overline{Ü}) \\
+&amp;= 0.92\cdot 0.02 + 0.05\cdot 0.98 \\
+&amp;= 0.0674
+\end{aligned}
+\]</span> Nun lässt sich die gesuchte Wahrscheinlichkeit bestimmen: <span class="math display">\[
+\begin{aligned}
+p(Ü|W) &amp;= \frac{p(W|Ü)\cdot p(Ü)}{p(W)} \\
+&amp;= \frac{0.92 \cdot 0.02}{0.0674} \\
+&amp;= 0.273
+\end{aligned}
+\]</span> Die Wahrscheinlichkeit, dass eine Übernahme bevorsteht, wenn das System eine Warnung ausgibt, liegt demnach bei knapp 27% und somit unter den gewünschten 80%.</p>
+<hr>
+</section>
+<section id="kapitel-3" class="level2">
+<h2 class="anchored" data-anchor-id="kapitel-3">Kapitel 3</h2>
+<hr>
+<p><strong>Erläutern Sie die Idee einer Regression zum Durchschnitt. Was bedeutet das für die zu erwartende Rendite am deutschen Aktienmarkt im Jahr 2007? Erklären Sie in diesem Zusammenhang den Monte-Carlo-Effekt als heuristisch bedingte Verzerrung.</strong></p>
+<p><em>Folie 7</em> Die Idee einer Regression zum Durchschnitt besagt, dass auf Jahre mit überdurchschnittlichen Renditen am Aktienmarkt Jahre mit unterdurchschnittlichen Renditen folgen werden. Für 2007 wäre demnach nach Jahren hoher Renditen am deutschen Aktienmarkt mit einer Rendite unter dem langfristigen Durchschnitt zu rechnen. Der Monte-Carlo-Effekt ist eine heuristisch bedingte Verzerrung, bei der Investoren irrtümlich annehmen, dass eine zufällige Sequenz (z.B. Kopf-Zahl beim Münzwurf) einem repräsentativen Muster folgen müsse. Dies führt zu Fehleinschätzungen von Wahrscheinlichkeiten.</p>
+<hr>
+<p><strong>Wie erklärt Terrance Odean (1998) die schwachen Lerneffekte bei Overconfidence im Zeitablauf?</strong></p>
+<p><em>Folie 28</em> Laut Terrance Odean lernt Overconfidence nur langsam ab, da das Feedback an den Finanzmärkten oft langsam und verrauscht ist. Schnelles und klares Feedback ist aber nötig für schnelles Lernen. Daher kalibriert sich das Vertrauen in die eigenen Fähigkeiten an den Finanzmärkten nur langsam.</p>
+<hr>
+<p><strong>Was ist der self-serving Bias? Welche Theorien erklären ihn und welche Faktoren treiben ihn? Welche Auswirkungen hat er?</strong></p>
+<p><em>Folie 30-34</em> Der self-serving Bias ist die Tendenz, Erfolge eher internalen Faktoren wie eigenen Fähigkeiten zuzuschreiben und Misserfolge eher externalen Faktoren. Er wird durch Motivationstheorien (Schutz des Selbstwertgefühls) und Informationsverarbeitungstheorien (verzerrte Informationsbewertung) erklärt. Getrieben wird er u.a. durch Alter, Kultur und Erfahrung. Er kann zu überhöhtem Selbstbewusstsein und suboptimalen Entscheidungen führen.</p>
+<hr>
+<p><strong>Führende amerikanische Finanzprofessoren sind der Meinung, dass Overconfidence das bedeutendste psychologisch bedingte Problem an den internationalen Kapitalmärkten ist.</strong> 1. <strong>Erläutern Sie, was Overconfidence ist und wie es zum Ausdruck kommt.</strong> 2. <strong>Warum verschwindet Overconfidence an Kapitalmärkten nicht schnell durch konsequentes Lernen?</strong> 3. <strong>Overconfidence ist nicht immer gleich stark ausgeprägt. Welche Unterschiede zwischen verschiednen Gruppen von Kapitalmarktteilnehmern wurden festgestellt?</strong></p>
+<p><em>Folie 16-29</em> 1. Overconfidence bedeutet, dass Investoren ihre Fähigkeiten und Kenntnisse bei Prognosen überschätzen. Dies kommt z.B. zum Ausdruck in zu engen Prognoserisikobändern und der Annahme, den Markt übertreffen zu können. 2. Overconfidence verschwindet laut Terrance Odean nicht schnell, da das Feedback an Kapitalmärkten oft verzögert und verrauscht ist. Für schnelles Lernen wäre aber klares, zeitnahes Feedback nötig. 3. Jüngere, unerfahrene Investoren sowie Männer zeigen tendenziell mehr Overconfidence. Kulturell ist sie in Asien stärker verbreitet als in den USA.</p>
+<hr>
+<p><strong>Was besagen die Phänomene “Verlustaversion” und “mentale Konten” und weshalb können sie sich negativ auf Portfolio-Renditen auswirken?</strong></p>
+<p><em>Folie 66-75</em> Verlustaversion bedeutet, dass Verluste stärker gewichtet werden als Gewinne. Dies führt dazu, dass Verluste nicht realisiert werden (Dispositionseffekt). Mentale Konten bedeuten, dass Anleger separate Konten für einzelne Investments führen und das Gesamtportfolio nicht optimieren. Beide Phänomene können zu einer suboptimalen Portfoliozusammensetzung und Depotumschichtungen führen, die die Rendite schmälern.</p>
+<hr>
+<p><strong>Milton Friedman stellte 1953 fest, dass jede Preisabweichung eine attraktive Investmentmöglichkeit generiert und dass rationale Investoren sofort attraktive Investments erkennen und entsprechend handeln. Diese Aussage ist in ihrer Gesamtheit fragwürdig. Erläutern Sie, warum sie fragwürdig ist und geben Sie die Risiken an, die beim Ausnutzen von Fehlbewertungen am Aktienmarkt im Kalkül berücksichtigt werden müssen.</strong></p>
+<p><em>Folie 6</em> Die Aussage ist fragwürdig, da Investoren aufgrund von heuristischen Verzerrungen und begrenzter Rationalität Preisabweichungen nicht immer korrekt als Investmentchancen erkennen und nicht immer entsprechend handeln. Risiken beim Ausnutzen von Fehlbewertungen sind z.B. unbekannte Risiken der Aktie, Behavioral Risks wenn sich die Fehlbewertung verstärkt statt abschwächt und Liquiditätsrisiken, wenn die Aktie nicht handelbar ist.</p>
+<hr>
+<p><strong>Beschreiben Sie die Annahmen und Hauptaussagen der neoklassischen Spartheorie.</strong></p>
+<p><em>Folie 80</em> Annahmen: - Rationalität - rationale Erwartungen - intertemporale Nutzenmaximierung - Selbstkontrolle</p>
+<p>Hauptaussagen: - Dreieckiger Verlauf des Vermögenspfads - Unabhängigkeit des Konsums von Einkommen - Gleichlauf von Konsum- und Einkommensverlauf</p>
+<hr>
+<p><strong>Wie funktionieren gesetzliche und private Krankenversicherungen und in welchen Punkten unterscheiden sie sich?</strong></p>
+<p><em>Folie 87</em> Die gesetzliche Krankenversicherung ist pflichtversichert mit einkommensabhängigen Beiträgen. Die private Krankenversicherung ist freiwillig mit risikoabhängigen Beiträgen. Die gesetzliche Krankenversicherung übernimmt alle gesetzlich festgeschriebenen Leistungen, die private leistet nur vertraglich festgelegte Leistungen.</p>
+<hr>
+</section>
+<section id="kapitel-4" class="level2">
+<h2 class="anchored" data-anchor-id="kapitel-4">Kapitel 4</h2>
+<hr>
+<p><strong>Momentumstrategien basieren auf einem Mittelfristigen Anlagehorizont und unterstellen, dass Aktienrenditen zumindest in Teilen vorhersagbar sind.</strong> 1. <strong>Erläutern Sie die allgemeine Vorgehensweise dieser mittelfristigen Anlagestrategien.</strong> 2. <strong>Welche Erklärungsansätze für den Erfolg dieser Strategien wurden überprüft, um die Resultate im Einklang mit der Theorie effizienter Kapitalmärkte zu erklären? Welche Ergebnisse wurden für diese Erklärungsansätze gefunden?</strong> 3. <strong>Welche Erklärungsmöglichkeit bietet die Behavioral Finance an?</strong></p>
+<ol type="1">
+<li><em>Folie 11</em>
+<ol type="1">
+<li>Es wird eine Formationsperiode definiert (typischerweise 3-12 Monate).</li>
+<li>In dieser Periode werden die Aktien nach ihrer Rendite sortiert.</li>
+<li>Nach der Formationsperiode werden die Aktien mit der besten Rendite gekauft und die mit der schlechtesten Leerverkauft. Die Positionen werden dann für einen bestimmten Zeitraum (z.B. 3 oder 6 Monate) gehalten.</li>
+</ol></li>
+<li><em>Folie 19</em>
+<ol type="1">
+<li>Zufall ist es nicht, die Signifikanz der Ergebnisse wurde statistisch überprüft.</li>
+<li>Marktfriktionen wie Transaktionskosten, Illiquidität und Leerverkaufsbeschränkungen können die Rentabilität dieser Strategie einschränken.</li>
+<li>Risiko: Es wurde untersucht, ob die Gewinner-Aktien risikoreicher sind. Die Ergebnisse zeigten aber, dass die Risikoadjustierung die Überrenditen der Gewinner-Aktien nicht erklären kann.</li>
+</ol></li>
+<li><em>Folie 21</em> Die Behavioral Finance erklärt den Erfolg durch systematische Fehler in der Informationsverarbeitung. Es kommt zu einer zu langsamen Anpassung der Erwartungen an neue Informationen.</li>
+</ol>
+<hr>
 
 
 </section>
