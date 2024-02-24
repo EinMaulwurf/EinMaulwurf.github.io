@@ -15,6 +15,7 @@ website:
         text: "Ökonometrische Methoden"
       - file: statistical-machine-learning/sml.qmd
         text: "Statistical Machine Learning"
+      - file: fofi/fundamentals_of_finance.qmd
   sidebar:
     - title: "EWF"
       style: "docked"
@@ -27,7 +28,11 @@ website:
         - oekonometrische-methoden/oekonometrische-methoden.qmd
         - oekonometrische-methoden/zeitreihenanalyse.qmd
         - oekonometrische-methoden/methoden-der-ewf.qmd
-
+    - title: "FoFi"
+      style: "docked"
+      contents: 
+        - fofi/fundamentals_of_finance.qmd
+        - cofi_I.qmd
 
 format:
   html:

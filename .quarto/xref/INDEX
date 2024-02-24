@@ -28,5 +28,11 @@
   },
   "statistical-machine-learning/sml.qmd": {
     "sml.html": "5cafce67"
+  },
+  "fofi/cofi_I.qmd": {
+    "cofi_I.html": "48bc1be8"
+  },
+  "fofi/fundamentals_of_finance.qmd": {
+    "fundamentals_of_finance.html": "d72d772f"
   }
 }
