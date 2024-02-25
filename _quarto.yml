@@ -21,7 +21,6 @@ website:
       contents:
         - ewf/ewf.qmd
         - ewf/ewf-uebung-1.qmd
-        - ewf/oekonometrische-methoden.qmd
         - ewf/zeitreihenanalyse.qmd
         - ewf/methoden-der-ewf.qmd
     - title: "FoFi"

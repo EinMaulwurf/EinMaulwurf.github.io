@@ -181,7 +181,7 @@ Issuing new shares will dilute current ownership percentages.
 
 ***
 
-**Why do companies in the same industry go public in clusters?
+**Why do companies in the same industry go public in clusters?**
 
 - Reasons *external* to the firm and *external* to the stock market:
 	- More projects need to be funded, based on the broader economy and the business cycle.
@@ -462,7 +462,7 @@ The graphic shows a drop in the share price after the IPO. This might be due to 
 
 ***
 
-**What is a lock-up period? How long can it last?
+**What is a lock-up period? How long can it last?**
 
 Lock-ups are standard arrangements in an IPO. They restrict the sale of shares by pre-issue shareholders for a certain period, often times 6 months. This is done to align the interests of current owners to the owners and a quick "cashing out" on the IPO day.
 
@@ -553,7 +553,7 @@ Capital increases can be distinguished by the means of the increase:
 
 ***
 
-**What is "underperforming" and how do you determine that in IPOs/SEOs?
+**What is "underperforming" and how do you determine that in IPOs/SEOs?**
 
 Underperformance means that a firm which did an IPO/SEO perforce worse than the broad market or a specific subset over a long time period, typically measured between 1 to 5 years.
 It is typically calculated using the Buy-And-Hold-Abnormal-Return of stock $i$ up to month $M$ after an IPO/SEO:
