@@ -2,19 +2,8 @@
 title: "Home"
 ---
 
-This is a Quarto website.
+![](maulwurf.png){width=40%}
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+> Diese Seite habe ich erstellt, um meine Mitschriften aus der Uni zu teilen. Falls Euch Fehler auffallen, erstellt gerne ein Issue auf Github.
 
-```{r}
-1 + 1
-```
-
-This is a test! And a new one! And a third one!
-
-We can write math in the text like $a^2 + b^2 = c^2$ or in display mode:
-$$
-\int x\ dx = \frac{1}{2}x^2
-$$
-
-Einen ersten Test kann man [hier](./ewf/ewf.qmd) sehen
+Das [GitHub](https://github.com/EinMaulwurf/EinMaulwurf.github.io) Repository dieser Seite.

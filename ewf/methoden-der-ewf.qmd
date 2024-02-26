@@ -1,6 +1,12 @@
 ---
 title: "Methoden der EWF"
 code-fold: true
+
+format: 
+   html:
+     df-print: paged
+     fig-width: 5
+     fig-height: 3
 ---
 
 Die folgenden Packages wurden für das Erstellen dieses Dokuments verwendet:

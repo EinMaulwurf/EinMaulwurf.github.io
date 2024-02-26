@@ -1,6 +1,11 @@
 ---
 title: "Statistical Machine Learning"
 code-fold: true
+cache: true
+format: 
+  html:
+    fig-width: 5
+    fig-height: 3
 ---
 
 Required packages
@@ -21,115 +26,14 @@ library(ggpubr)
 library(viridis)
 ```
 
-# Refresher Linear Algebra
-
-## You know now
-
--   What vectors and matrices represent
--   Which operations you can do with vectors and matrices
--   What eigenvectors and eigenvalues are
--   How to perform a linear transformation
-
-## Self-Test Questions
-
--   Remember vectors and what you can do with them
--   Remember matrices and what you can do with them
--   What is a projection? How do you use it?
--   How to compute the inverse of a matrix?
--   What are Eigenvectors and Eigenvalues?
--   What is a change of basis? What is a linear transformation? Are they the same?
-
-# Refresher Optimization
-
-## You know now
-
--   How machine learning relates to optimization
--   What a good cost function looks like
--   What convex sets and functions are
--   Why convex functions are important in machine learning
--   What unconstrained and constrained optimization are
--   What the Lagrangian is
--   Different numerical optimization methods
-
-## Self-Test Questions
-
--   Why is optimization important for machine learning?
--   What do well-formulated learning problems look like?
--   What is a convex set and what is a convex function?
--   How do I find the maximum of a vector-valued function?
--   How to deal with constrained optimization problems?
--   How to solve such problems numerically?
-
 # 01 Introduction
-## You know now
 
--   What Machine Learning is and what it is not
-
-Machine learning is a subfield of artificial intelligence that gives computers the ability to learn without explicitly being programmed. Artificial intelligence systems are used to perform complex tasks in a way that is similar to how humans solve problems.
-
--   Some examples of Machine Learning applications
--   The different types of learning problems
-
-Supervised Learning: Data with labels (input - output pairs); Examples are Image with digital label, Email with spam/not spam label, Online news with click/not click label 
-
-Unsupervised Learning: Data without labels; Examples are Clustering, Dimensionality reduction, Anomaly detection
-
-Data with and without labels: Semi-supervised Learning
-
-## Self-Test Questions
--   What are some of Machine Learning applications?
--   When can we benefit from using Machine Learning methods?
--   What are the different types of learning?
-
+*Nothing to see here.*
 
 # 02 Statistics
-## You know now
--   What random variables are (both continuous and discrete)
--   What probability distributions are
--   What expectation and variance are
--   What a Gaussian distribution is and why it is so important
--   What information and entropy are
--   How to measure the similarity between two probability distributions
 
-## Self-Test Questions
--   What is a random variable?
 
-A random variable is a variable whose possible values are numerical outcomes of a random phenomenon. There are two types of random variables, discrete and continuous.
-
--   What is a distribution?
-
-A distribution is a function that shows the possible values for a variable and how often they occur. The values are often shown on the x-axis, and the frequency (or probability) values are shown on the y-axis.
-
--   What is a Gaussian distribution?
-
-The gaussian or normal distribution is a continuous probability distribution that is symmetric about the mean, showing that data near the mean are more frequent in occurrence than data far from the mean. In graph form, normal distribution will appear as a bell curve.
-
--   What is an expectation?
-
-The expectation of a distribution is the average value of a random variable over many trials of an experiment. It is also known as the expected value. One can calculate it for discrete random variables using the formula $E(X) = \sum_{x} p(x) \cdot f(x)$ and for continuous random variables using the formula $E(X) = \int_{-\infty}^{\infty} p(x) \cdot f(x) dx$.
-
--   What is a joint distribution?
-
-A joint distribution often written as $p(x,y)$ and also known as a joint probability distribution, is a probability distribution that describes the simultaneous behavior of two or more random variables. It characterizes the probabilities of different combinations of outcomes for the random variables.
-
-In a joint distribution, each possible combination of outcomes for the random variables is assigned a probability. The probabilities assigned to these combinations represent the likelihood of observing those specific combinations of outcomes.
-
-For example, consider two random variables X and Y. A joint distribution for X and Y would provide the probabilities for each possible pair of outcomes (x, y), where x represents an outcome of X and y represents an outcome of Y.
-
-A joint distribution can be represented in various ways, including tabular form, probability mass function (PMF) for discrete variables, or probability density function (PDF) for continuous variables. The joint distribution can be used to calculate various statistical measures and perform further analysis, such as determining marginal distributions, calculating conditional probabilities, or estimating covariance between the random variables.
-
--   What is a conditional distribution?
-
-A conditional distribution, defined as $p(y|x) = \frac{p(x,y)}{p(x)}$.
-If the joint distribution $p(x_a, x_b)$ is Gaussian, then the conditional distributions $p(x_a|x_b)$ and $p(x_b|x_a)$ as well as the marginal distributions p(x_a) and p(x_b) are also Gaussian.
-
-![Conditional and marginal distributions](./pictures/conditional marginal distribution.png)
-
--   What is a distribution with a lot of information?
--   How to measure the difference between distributions?
-
-## Review
-### Central Limit Theorem
+## Central Limit Theorem
 
 The central limit theorem says, that a sum of random variables will approximate the normal distribution. Here are two examples, one using a uniform distribution and one using the exponential distribution.
 ```{r}
@@ -210,26 +114,7 @@ Note how the mean and the variance get larger the larger the sum gets.
 
 # 03 Baysian Decision Theory
 
-## Now, you know
-
--   The definition of class priors, class conditional probabilities and class posteriors
--   How to use Bayes Theorem for classification
--   How to calculate the probability of misclassification
--   How to obtain optimal decisions using Bayes optimal classifier
--   How to generalize decision making using multi-dimensional features and more than 2 classes
--   The value of risk minimization and how it relates to misclassification
-
-## Self-Test Questions
-
--   How do we incorporate prior knowledge on the class distribution?
--   How can we decide on classifying a query based on simple and general loss functions?
--   What does "Bayes optimal" mean?
--   How can we deal with 2 or more classes?
--   How can we deal with high dimensional feature vectors?
--   What are the equations for misclassification rate and risk?
-
-## Review
-### Priors and conditional probabilities
+## Priors and conditional probabilities
 Let's imagine we want to build an OCR (Optical Character Recognition
 ti) system. For that, we count the number of black pixels for a given letter and call it $x$. Let's also imagine that there are only two letters **a** and **b**.
 
@@ -252,7 +137,7 @@ $$p(C_k|x) = \frac{p(x|C_k)p(C_k)}{p(x)} = \frac{p(x|C_k)p(C_k)}{\sum_j p(x|C_j)
 which we can interpret as
 $$\text{Posterior} = \frac{\text{Likelihood} \cdot \text{Prior}}{\text{Normalization Factor}}$$
 
-### Bayesian Decision Theory
+## Bayesian Decision Theory
 The goal here is to minimize the probability of misclassification or the probability of making a wrong decision:
 \begin{align*}
 p(\text{error}) &= p(x \in R_1, C_2) + p(x \in R_2, C_1) \\
@@ -272,7 +157,7 @@ p(x|C_1)p(C_1) &> p(x|C_2)p(C_2)
 which results in the Likelihood Ratio Test (LRT):
 $$\frac{p(x|C_1)}{p(x|C_2)} > \frac{p(C_2)}{p(C_1)}$$
 
-### Risk Minimization
+## Risk Minimization
 
 We can also use a loss function to minimize the risk of misclassification. The loss function $L(C_k, C_j)$ is a measure of the loss incurred by deciding $C_j$ when the true class is $C_k$. This is especially relevant if the cost of misclassification is not the same for all classes. For example, it's better to have a false alarm on a smoke detector than to miss a fire (asymmetric loss). We define a loss function
 $$\lambda(\alpha_i | C_j) = \lambda_{ij}$$
@@ -285,24 +170,6 @@ R(\alpha_i | x) &= \mathbb{E}_{C_k \sim p(C|x)}[\lambda(\alpha_i | C_k)] \\
 
 # 04 Probability Density Estimation
 
-## Now you know
-
--   The parametric, non-parametric, and mixture models
--   More about the likelihood function and how to derive the
--   maximum likelihood estimators for the Gaussian distribution
--   What Bayesian estimation is
--   Different non-parametric models (histogram, kernel density
--   estimation and k-nearest neighbors)
-
-## Self-Test Questions
-
--   What are parametric methods, and how to obtain their parameters?
--   How many parameters have non-parametric methods?
--   What are mixture models?
--   Should gradient methods be used for training mixture models?
--   What is the biggest problem of mixture models?
-
-## Review
 
 Probability density estimation (PDE) is about finding the class conditional probability $p(x|C_k)$.
 
@@ -312,7 +179,7 @@ There exist three models for PDE:
 - Non-Parametric Models: No explicit parameters are used, but every known data point is used as a parameter (so, non- parametric models have as much parameters as there is data).
 - Mixture Models: Combination of both.
 
-### Parametric Models
+## Parametric Models
 One of the easiest parametric models is the Gaussian distribution. It is defined by the mean $\mu$ and the variance $\sigma^2$. The probability density function is given by 
 $$p(x|\theta) = p(x|\mu, \sigma) = \frac{1}{\sqrt{2\pi \sigma^2}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)$$
 For data $x$ that is generated by this model, we write $x \sim p(x|\theta)$.
@@ -333,11 +200,11 @@ This has mostly numerical advantages, as a product of small values can get very 
 
 This approach breaks down if the data set contains only one single data point, e.g. $\mathcal{D} = \{x_1\}$. Then, the mean equals the data point and the variance becomes zero.
 
-### Bayesian Estimation
+## Bayesian Estimation
 
 …
 
-### Non-Parametric Models
+## Non-Parametric Models
 
 Non-parametric models are useful if the underlying probability density distribution family is unknown. They are directly estimated from data, without an explicit parametric model. Every data point is a parameter, so non-parametric models have an uncertain and possibly infinite number of parameters. The biggest problem with most estimation models is the “too smooth vs. not smooth enough” problem.
 
@@ -364,7 +231,7 @@ data.frame(data) %>%
   theme_bw()
 ```
 
-#### Histograms
+### Histograms
 
 ```{r}
 data.frame(data) %>%
@@ -376,7 +243,7 @@ data.frame(data) %>%
 
 The problem with histograms is, that for higher dimensions, the number of needed bins increases drastically. For $D$ dimensions, we need $N^D$ bins.
 
-#### Kernel density estimation (KDE)
+### Kernel density estimation (KDE)
 
 The idea behind kernel density estimation is to put a kernel upon each observation $\mathbf{x}_n$ and then to sum up those kernels:
 $$ p(\mathbf{x}) \approx \frac{K}{NV} = \frac{1}{Nh^d} \sum_{n=1}^N k(\mathbf{x} - \mathbf{x{_n}}) $$
@@ -579,7 +446,7 @@ ggarrange(p1, p2, nrow = 1)
 
 In $d$ Dimensions, the bandwidth is a vector of length $d$.
 
-#### K-nearest neighbors (KNN)
+### K-nearest neighbors (KNN)
 
 The K-nearest neighbors approach calculates the distance from a point $x$ to every point in the data set. It then sorts the neighbors by distance and checks the k'th distance. The higher the distance from point $x$ to its k'th neighbor, the lower the density and vice versa.
 
@@ -655,7 +522,7 @@ p2 <- data.frame(xy_points, density_estimates_normalized) %>%
 ggarrange(p1, p2, nrow = 1)
 ```
 
-### Mixture Models
+## Mixture Models
 
 Let's first take a step back and compare parametric and nonparametric models:
 
@@ -714,29 +581,11 @@ data.frame(x = d) %>%
 One could try to solve such find the parameters of such a model using Maximum Likelihood. But a better way is presented in the section on the EM algorithm.
 
 # 05 Clustering
-## You know now
 
--   A taxonomy of clustering algorithms
--   Exemplary clustering algorithms
-    -   K-Means
-    -   Expectation Maximization
-    -   Mean Shift
-
-## Self-Test Questions
-
--   How can clustering algorithms be categorized?
--   How do you find clusters using the k-means algorithm?
--   How are the expectation and maximization steps defined?
--   What are the difficulties when using the EM algorithm?
--   How does mean-shift clustering work?
--   Do the clustering algorithms converge to local or global solutions?
--   How does density estimation relate to clustering?
-
-## Review
 Clustering is a type of unsupervised learning where all data points are unlabeled.
 The objective is therefore to find groups of similar x values in the data space (can be one-dimensional or multi-dimensional) and associate these with a discrete set of clusters. And there lies one of the hardest problems already: How should one decide on the number of clusters?
 
-### K-Means Clustering
+## K-Means Clustering
 
 Let's use the famous iris data set, which contains 150 data points with 4 measurements of the petal (deutsch: Blütenblatt) and sepal (deutsch: Kelchblatt) as well as a label for the species.
 
@@ -837,7 +686,7 @@ iris %>%
 |                            | Only spherical clusters                   |
 |                            | Converges only to local optimum           |
 
-### EM-Clustering
+## EM-Clustering
 <a id="EM-Clustering"></a>
 For the EM algorithm, the assumption is that the data is generated by an underlying probability distribution which is a Gaussian mixture model. We now cluster using soft assignments, that means we assign each data point a probability of belonging to a cluster. But one after the other.
 
@@ -1013,7 +862,7 @@ The algorithm converges after `r iter` iterations and correctly finds the two Ga
 | Can predict new data points  | Computationally expensive       |
 |                              | Converges only to local optimum |
 
-#### Mean Shift
+### Mean Shift
 Mean shift is a method for finding modes in a cloud of data points. To be more precise, it tries to find the modes of a kernel density estimate through local search
 
 ```{r}
@@ -1043,60 +892,14 @@ TODO
 
 
 # 06 Evaluation
-## You know now
 
--   The meaning of under- and overfitting
--   How to find the optimal number of clusters
--   How to compute the bias and variance of an estimator
--   The definition of MVUE and BLUE
--   The bias and variance of Gaussian MLE
--   The Bias-Variance trade-off
--   How to mimic test data evaluation using cross-validation
--   Different variants of cross-validation
-
-## Self-Test Questions
-
--   What does under- and overfitting mean?
--   What is Occam's Razor?
--   How can you prevent under- and overfitting in clustering?
--   How can you calculate the bias and variance of an estimator?
--   What is the difference between MVUE and BLUE?
--   Are maximum likelihood estimators always unbiased?
--   What is the bias-variance trade-off?
--   What is leave-one-out cross-validation? What do we need it for?
-
-## Review
-
-TODO
+*Nothing to see here.*
 
 # 07 Classification
 
-## You know now
+## Discriminant Functions
 
--   What a Bayesian Optimal Classifier is
--   What a discriminant function is
--   How to formalize (with intuition and mathematically) the classification problem as linearly separable
--   How to compute the least squares solution for classification and why it fails
--   What Fisher's Linear Discriminant is and how it differs from least-squares
--   What the perceptron is, why it fails in the XOR problem, and how to overcome it with feature spaces
--   The difference between Generative and Discriminative modeling
--   What logistic regression is
-
-## Self-Test Questions
-
--   How do we get from Bayesian optimal decisions to discriminant functions?
--   How to derive a discriminant function from a probability distribution?
--   How to deal with more than two classes?
--   What does linearly-separable mean?
--   What is Fisher discriminant analysis? How does it relate to regression?
--   Is Fisher's linear discriminant Bayes optimal?
--   What are perceptrons? How can we train them?
--   What is logistic regression? How to derive the parameter update rule?
-
-## Review
-### Discriminant Functions
-
-### Fisher Discriminant Analysis
+## Fisher Discriminant Analysis
 
 The goal of Linear Discriminant Analysis (LDA) is to find a linear combination of features (vector $\mathbf{w}$) that effectively separates or characterizes two or more classes of objects or events. It aims to reduce dimensionality while preserving as much of the class discriminatory information as possible.
 
@@ -1277,7 +1080,7 @@ Z <- scale(X, scale = FALSE)
 # Class variable
 y <- rep(c(0, 1), each = n)
 
-#######
+#####
 
 # Calculate the means of each class
 class1_data <- Z[y == 1, ]
@@ -1299,7 +1102,7 @@ W2 <- cov(class2_data)
 # Compute the within-class scatter matrix
 W <- W1 + W2
 
-#######
+#####
 
 # Scatter matrices
 #B <- betweenCov(variables = X, group = y)
@@ -1334,11 +1137,11 @@ plt
 ```
 
 
-### Perceptron Algorithm
+## Perceptron Algorithm
 
 TODO
 
-### Logistic Regression
+## Logistic Regression
 
 Logistic regression is a type of discriminative modelling, where we model the class posterior directly. 
 
@@ -1449,28 +1252,10 @@ df %>%
 
 # 08 Regression
 
-## You know now
-
--   How to formulate a linear regression problem
--   The different methods to perform linear regression: least-squares, maximum likelihood, and maximum a-posteriori
--   Derive the equations for the parameters using the different methods
--   Why introducing a prior distribution over the parameters can combat overfitting
--   The bias and variance tradeoff in maximum likelihood approaches
-
-## Self-Test Questions
-
--   What is regression (in general) and linear regression (in particular)?
--   What is the cost function of regression and how can I interpret it?
--   What is overfitting?
--   How can I derive a Maximum-Likelihood Estimator for Regression?
--   Why are Bayesian methods important?
--   What is MAP and how is it different from full Bayesian regression?
-
-## Review
 
 Regression is similar to classification, but instead of having discrete outputs (classes), the output is continuous.
 
-### Introduction to Linear Regression
+## Introduction to Linear Regression
 
 For linear regression, we are given data points $(\mathbf{x}_i, y_i)$ which we can express as a linear combination $\mathbf{x}_i^T \mathbf{w} + w_0 = y_i$. Sometimes, we also include $w_0$ in $\mathbf{w}$ and $1$ in $\mathbf{x}_i$. Now we can write
 $$
@@ -1638,7 +1423,7 @@ As expected, the inversion fails because the matrix is not full rank.
 
 Similarly, the inversion might run into numerical issues if two features (rows of the $\mathbf{X}$ matrix) are very similar. This leads us straight to ridge regression, which will be discussed later.
 
-### Maximum Likelihood approach
+## Maximum Likelihood approach
 
 Let's take a deeper look at the error term $\mathbf{e}$ in $\mathbf{X}^T\mathbf{w} + \mathbf{e}= \mathbf{y}$. We need to include this term, because our linear combination of $\mathbf{X}$ and $\mathbf{w}$ will not perfectly come out to $y$ with real world data. But until now, we did not assume much about $\mathbf{e}$. Let's now assume, that it is normally distributed following $e \sim N(0, \sigma^2)$. Now all of a sudden, $y$ is also randomly distributed with $y_i \sim N(\mathbf{x}_i^T\mathbf{w},\sigma^2)$
 
@@ -1655,11 +1440,11 @@ When we differentiate the log-likelihood function with respect to $\sigma^2$, se
 
 TODO: Loss function in regression
 
-### Bias and Variance in Linear Regression
+## Bias and Variance in Linear Regression
 
 TODO
 
-### Bayesian Linear Regression
+## Bayesian Linear Regression
 
 Overfitting is a big problem, especially in smaller datasets, as shown by the following example with polynomial degree 5.
 ```{r}
@@ -1799,25 +1584,7 @@ Another benefit of this regularization term is, that it helps us with the matrix
 
 # 09 Kernel Methods and Gaussian Processes
 
--   How kernels alleviate the need to handcraft feature functions
--   How to derive the dual formulation of linear regression and what are its pros and cons
--   What GPs are and the assumptions behind them
--   With GPs, we can predict the value for a new point in closed form because of the Gaussian conditionals
--   Doing regression with GPs, we get a mean value and a variance (uncertainty) of the estimate
--   The ideas behind Bayesian Learning, its pros, and cons
-
-## Self-Test Questions
-
--   Are kernel methods non-parametric or have infinitely many parameters?
--   Why are kernel regression methods very computationally expensive?
--   Why is kernel regression the dual to linear regression?
--   What is the major advantage of GPs over Kernel Ridge Regression?
--   Why are GPs a Bayesian approach?
--   What principle allowed deriving GPs from a Bayesian regression point of view?
--   How to get the hyperparameters?
-
-## Review
-### Kernel Methods for Regression
+## Kernel Methods for Regression
 
 The traditional approach of Linear Regression has a limitation — it requires "handcrafted" features. Ideally, we would want to let the number of features $d$ grow to infinity ($d \rightarrow \infty$) and combine this with regularization to automate the feature selection process. However, this leads to computational challenges. For instance, we need to multiply a $n \times d$ matrix with a $d \times n$ matrix and then invert a $d \times d$ matrix to compute $\mathbf{w}$. When predicting new data points, we need to calculate $\mathbf{X}^T\mathbf{w}$, where $\mathbf{w}$ is of size $d \times 1$. To overcome these issues, we introduce kernel methods.
 
@@ -1837,7 +1604,7 @@ $$
 
 Some kernels, like the Gaussian kernel or the radial basis function (RBF) kernel, correspond to transformations, such as $\phi(x)$, which would be infinitely large and thus impossible to find.
 
-### Kernelized Ridge Regression
+## Kernelized Ridge Regression
 
 In contrast to much of econometrics, here in machine learning, we care mostly about predicting new data rather than understanding the connection between things. For example, economists might want to study the relation between drinking and deaths in motor vehicle accidents, see how big it is and what other influences there are. Machine learning people might only care about predicting the number of motor vehicle accidents for next year. Thus, they don't actually need to know the weights $\mathbf{w}$.
 
@@ -2065,7 +1832,7 @@ ggplot()+
 ```
 
 
-### Bayesian Linear Regression
+## Bayesian Linear Regression
 
 Now we know from kernel ridge regression that we don't actually need $\mathbf{w}$, if all we care about is predicting new data. So now the idea is to remove $\mathbf{w}$ by marginalizing over it or integrating it out.
 $$
@@ -2163,7 +1930,7 @@ For every test input $x_\star$ we get a mean $\mu_\star$ and a variance $\sigma_
 
 Tweaking $\sigma^2$ changes the confidence intervals, while changing $\sigma_0^2$ mostly changes the means.
 
-### Gaussian Processes Regression
+## Gaussian Processes Regression
 
 Gaussian processes are now a combination of kernel ridge regression and the Bayesian approach. The idea here is to formulate the predictive distribution from Bayesian linear regression using kernels. The result is what we call Gaussian process regression.
 
@@ -2292,7 +2059,7 @@ p1 <- data.frame("x_star" = x_seq, "mu_star" = Mu_star, "sigma_star" = Sigma_sta
        subtitle = paste("σ = ", sigma, sep = ""))
 
 
-######################
+###############
 
 sigma <- 10
 
@@ -2347,7 +2114,7 @@ p2 <- data.frame("x_star" = x_seq, "mu_star" = Mu_star, "sigma_star" = Sigma_sta
        y = "y",
        subtitle = paste("σ = ", sigma, sep = ""))
 
-####################
+##############
 
 ggarrange(p1, p2, nrow = 1)
 ```
@@ -2358,32 +2125,12 @@ Another problem of this other kernel methods is scaling with larger datasets, be
 
 # 10 Latent representations
 
-## You know now
--   How to learn latent representations either by:
-    -   Reducing the dimensionality of the data via PCA
-    -   Introducing additional latent variables resulting in EM
-    -   Approximating distributions of latent variables with VI
 
-## Self-Test Questions
-
--   What does dimensionality reduction mean?
--   What is PCA? What are the three things that it does?
--   What are the roles of the Eigenvectors and Eigenvalues in PCA?
--   What is the relation between EM and k-Means?
--   Can you explain why the sequence of E- and M-steps maximizes the log data distribution?
--   What is the objective of VI?
--   Why is maximizing the ELBO equivalent to minimizing the KL between q and the posterior?
--   What is the term "variational" in VI referring to?
--   What are the two main concepts to derive the variational distribution q?
--   How can we move the sampling distribution gradient inside the expectation?
-
-## Review
-
-### Motivation
+## Motivation
 
 Latent variables are ones that we don't observe. This could be the class an object truly belongs to (clustering) or the desire to buy something, when we only observe the final decision (logistic regression).
 
-### Linear Dimensionality Reduction
+## Linear Dimensionality Reduction
 
 Our goal for linear dimensionality reduction is to find a mapping $\mathbf{x}_n \rightarrow \mathbf{z}_n$, where $\mathbf{x}_n$ is the original data point with a high dimension $D$ and $\mathbf{z}_n$ is a low dimensional representation of $\mathbf{x}_n$ with dimension $M \ll D$. This mapping should be a linear function $\mathbf{z}_n = \mathbf{B}\mathbf{x}_n$ with $\mathbf{B} \in \mathbb{R}^{M \times D}$.
 
@@ -2487,7 +2234,7 @@ ggplot(scree, aes(x = Principal_Component)) +
 
 As we can see, using two principal components only keeps around 50% of the data's variance or information. So it's not a big surprise anymore that we cannot sepearate the genres very well.
 
-### Expectation Maximization
+## Expectation Maximization
 
 This chapter is very similar to [this one on EM-Clustering](#EM-Clustering).
 
@@ -2567,50 +2314,8 @@ img_data %>%
 ```
 
 
-### Variational Inference
+## Variational Inference
 
-# 11 Neural Networks
-## You know now
--   What neural networks are and how they relate to the brain
--   How neural networks build stacks of feature representations
--   A network of one layer is enough, but in practice not a good idea
--   How to do forward and backpropagation
--   Different ways of doing fast gradient descent:
-    -   full, stochastic, mini-batch
-    -   Speed up training via learning rate adaptation
--   How to initialize the parameters
+# 11 & 12 Neural Networks
 
-## Self-Test Questions
-- Why are neural networks more popular than kernel models?
-- How does logistic regression relate to neural networks?
-- What kind of functions can single-layer neural networks learn?
-- How does a neural network look like that can solve the XOR problem?
-- Please explain the following: Each hidden layer folds the space of activations of the previous layer.
-- Why are deep neural networks better than shallow neural networks?
-- What is the mathematical equation that describes the output of the kth neuron in the output layer of a neural network with N-1 layers?
-- Which output layer and loss function do you need to use for a regression/classification task?
-- Why use a ReLU activation instead of sigmoid?
-- Derive the equations for forward and backpropagation for a simple network.
-- What is mini-batch gradient descent and why is it advantageous?
-- How does the Adam optimization algorithm work?
-
-## Review
-
-
-# 12 Neural Networks
-## You know now
-- Some famous neural network architectures
-- Why convolutions are used and how they work
-- How to work with sequential data
-- Why neural networks overfit and what you can do about it
-- Some theoretical results about neural networks
-
-## Self-Test Questions
-- What is the benefit of skip connections?
-- Why do we use convolutions?
-- How to compute the derivative of a convolution layer?
-- How can Fourier theory simplify convolution computations?
-- What are the benefits of RNN/LSTM/Self-attention?
-- If the input size doubles, how many more parameters have to be learned for a self-attention layer?
-- Why neural networks can overfit, and what are the options to prevent it?
-
+*Nothing to see here.*

@@ -1,9 +1,10 @@
 ---
-title: "About"
+title: "Info"
 ---
 
-About this site
+> Diese Seite habe ich erstellt, um meine Mitschriften aus der Uni zu teilen. Falls Euch Fehler auffallen, erstellt gerne ein Issue auf Github.
 
-```{r}
-1 + 1
-```
+Hier sind ein paar nützliche Links:
+
+- Das [GitHub](https://github.com/EinMaulwurf/EinMaulwurf.github.io) Repository dieser Seite
+- …

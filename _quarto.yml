@@ -3,32 +3,24 @@ project:
 
 website:
   title: "website"
-  navbar:
-    left:
-      #- file: index.qmd
-      #  text: "Home"
-      - file: about.qmd
-        text: "About"
-      - file: ewf/ewf.qmd
-        text: "EWF & mehr"
-      - file: statistical-machine-learning/sml.qmd
-        text: "Statistical Machine Learning"
-      - file: fofi/fundamentals_of_finance.qmd
-        text: "Finance"
+  favicon: "maulwurf.png"
   sidebar:
-    - title: "EWF"
-      style: "docked"
-      contents:
-        - ewf/ewf.qmd
-        - ewf/ewf-uebung-1.qmd
-        - ewf/zeitreihenanalyse.qmd
-        - ewf/methoden-der-ewf.qmd
-    - title: "FoFi"
-      style: "docked"
-      contents: 
-        - fofi/fundamentals_of_finance.qmd
-        - fofi/cofi_I.qmd
-        - fofi/household_finance.qmd
+    style: "docked"
+    contents:
+      - section: "Empirische Wirtschaftsforschung"
+        contents:
+          - ewf/ewf.qmd
+          - ewf/ewf-uebungen.qmd
+          - ewf/ewf-klausurvorbereitung.qmd
+          - ewf/zeitreihenanalyse.qmd
+          - ewf/methoden-der-ewf.qmd
+      - section: "Fundamentals of Finance"
+        contents: 
+          - fofi/fundamentals_of_finance.qmd
+          - fofi/cofi_I.qmd
+          - fofi/household_finance.qmd
+      - file: statistical-machine-learning/sml.qmd
+        text: "Statistical Machine Learning" 
 
 format:
   html:

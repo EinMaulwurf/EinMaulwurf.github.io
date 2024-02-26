@@ -1,0 +1,264 @@
+---
+title: "EWF Klausurvorbereitung"
+format: 
+   html:
+     df-print: paged
+     fig-width: 5
+     fig-height: 3
+---
+
+Libraries
+```{r}
+#| output: false
+
+library(MASS)
+library(lmtest)
+library(Ecdat)
+library(sur)
+library(plotly)
+library(tidyverse)
+library(gridExtra)
+```
+
+# Einfache Regressionsmodelle
+Regressions with Boston Housing Data
+```{r}
+housing <- Boston
+?Boston
+
+housing %>% ggplot(aes(x=lstat, y=medv))+
+  geom_point()
+```
+
+Regression Nummer 1 mit $\text{medv} = \beta_1 + \beta_2 \cdot \text{lstat}$
+```{r}
+Reg1 <- lm(formula = medv ~ lstat+1, data = housing)
+summary(Reg1)
+
+housing %>% ggplot(aes(x=lstat, y=medv))+
+  geom_point()+
+  geom_abline(intercept = Reg1$coefficients[1], slope = Reg1$coefficients[2])
+
+resettest(medv ~ lstat , power=2, type="regressor", data = housing)
+
+```
+
+Regression Nummer 2 mit $\ln(\text{medv}) = \beta_1 + \beta_2 \cdot \text{lstat}$
+```{r}
+Reg2 <- lm(formula = log(medv)~lstat, data = housing)
+summary(Reg2)
+
+housing %>% ggplot(aes(lstat, medv))+
+  geom_point()+
+  scale_y_continuous(trans = "log")+
+  geom_abline(intercept = Reg2$coefficients[1], slope = Reg2$coefficients[2])
+
+```
+
+Regression Nummer 3 mit $\ln(\text{medv}) = \beta_1 + \beta_2 \cdot \text{lstat} + \beta_3 \cdot \text{lstat}^2$
+```{r}
+Reg3 <- lm(formula = medv ~ lstat+I(lstat^2), data = housing)
+summary(Reg3)
+
+housing %>% ggplot(aes(x=lstat, y=medv))+
+  geom_point()+
+  stat_function(fun = function(x)
+    {Reg3$coefficients[1] + Reg3$coefficients[2]*x + Reg3$coefficients[3]*x^2})
+
+resettest(medv ~ lstat+I(lstat^2) , power=2, type="regressor", data = housing)
+
+```
+
+Regression Nummer 4 mit $\ln(\text{medv}) = \beta_1 + \beta_2 \cdot \text{lstat} + \beta_3 \cdot \text{lstat}^2 + \beta_4 \cdot \text{lstat}^3$
+```{r}
+Reg4 <- lm(formula = medv ~ lstat+I(lstat^2)+I(lstat^3), data = housing)
+summary(Reg4)
+
+housing %>% ggplot(aes(x=lstat, y=medv))+
+  geom_point()+
+  stat_function(fun = function(x)
+  {Reg4$coefficients[1] + Reg4$coefficients[2]*x + Reg4$coefficients[3]*x^2 + Reg4$coefficients[4]*x^3})
+
+resettest(medv ~ lstat+I(lstat^2)+I(lstat^3) , power=2, type="regressor", data = housing)
+```
+
+Prüfen auf Einflussreiche Beobachtungen und Außreißer
+```{r}
+length(housing$medv)
+
+column1 <- seq(1,1, length.out=506)
+matrix <- cbind(column1, housing$lstat)
+
+hatMatrix <- matrix %*% solve(t(matrix) %*% matrix) %*% t(matrix)
+diagHatMatrix <- diag(hatMatrix)
+
+show(diagHatMatrix)
+
+# jetzt müsste geprüft werden welche Zeilen der diagHatMatrix größer sind als 2*(2/506)
+
+as.data.frame(diagHatMatrix) %>%
+  mutate(n = 1:nrow(.)) %>%
+  filter(diagHatMatrix > 2*(2/506))
+
+```
+
+Auf Koliniarität prüfen
+```{r}
+Reg5 <- lm(formula = log(medv) ~ lstat + crim, data = housing)
+summary(Reg5)
+
+plot_ly(x=housing$lstat, y=housing$crim, z=log(housing$medv), 
+        type="scatter3d", mode="markers", color=housing$lstat, size=15)
+```
+
+# Ein paar Tests
+## Einfache Regression
+```{r}
+n <- 40
+quadratmeter <- seq(n)
+preis <- rnorm(n,0+3*quadratmeter, 40)
+data <- data.frame(quadratmeter, preis)
+
+a1 <- lm(preis~quadratmeter)
+summary(a1)
+
+data %>% ggplot(aes(quadratmeter, preis))+
+  geom_point()+
+  stat_function(fun = function(x)  {a1$coefficients[1] + a1$coefficients[2]*x})
+```
+
+## Heteroskedastizität
+Generierung von Heteroskedastizität und Verteilung der Residuen
+```{r}
+n2 <- 10000
+x <- runif(n2, min = 0, max = 10)
+y <- rnorm(n2, mean = 50+3*x, sd = 5+2*x)
+df1 <- data.frame(x, y)
+df1 %>%
+  ggplot(aes(x, y))+
+  geom_point(alpha = .5, size = .5)
+
+a2 <- lm(y~x)
+summary(a2)
+
+a2 %>% ggplot(aes(x=a2$residuals))+
+  geom_density()+
+  stat_function(fun = function(x){dnorm(x, mean = mean(a2$residuals), sd = sd(a2$residuals))}, linetype = "dashed")
+```
+Die Residuen (durchgezogene Linie) sind nicht normalverteilt (gestrichelte Linie)
+
+## Beispiel einer fehlehnden Binärvariable
+```{r}
+n <- 500
+data <- data.frame(x = runif(n, min = 0, max = 10),
+           group = c(1,2)) %>%
+  mutate(group = as.factor(group),
+         y = if_else(group == 1, 
+                     5 + 3*x + rnorm(n, 0, 2), 
+                     20 + 3*x + rnorm(n, 0, 2)))
+
+data %>%
+  ggplot(aes(x = x, y = y, color = group))+
+  geom_point()
+
+reg1 <- lm(y ~ x, data = data)
+reg1
+
+data.frame(resid = resid(reg1)) %>%
+  ggplot(aes(x = resid))+
+  geom_histogram(bins = 30)
+
+reg2 <- lm(y ~ x + group, data = data)
+reg2
+
+data.frame(resid = resid(reg2)) %>%
+  ggplot(aes(x = resid))+
+  geom_histogram(bins = 30)
+```
+
+
+## Chow Test für Strukturbruch
+Wir generieren zuerst einen Datensatz mit einem Strukturbruch bei $x=0$. Es soll nicht zu offensichtlich sein, damit der F-Test am Ende noch interessant bleibt.
+```{r}
+n <- 200
+
+x1 <- runif(n/2, min = -5, max = 0)
+x2 <- runif(n/2, min = 0, max = 5)
+
+y1 <- 5 + 1*x1 + rnorm(n/2, 0, 3)
+y2 <- 5 + 3*x2 + rnorm(n/2, 0, 3)
+
+data <- data.frame(x = c(x1, x2), y = c(y1, y2))
+
+data %>%
+  ggplot(aes(x, y))+
+  geom_point()
+```
+
+Wir sehen, dass eine "naive" lineare Regression hier kein gutes Ergebnis bringt.
+```{r}
+reg1 <- lm(y ~ x, data = data)
+summary(reg1)
+
+data %>% ggplot(aes(x, y))+
+  geom_point()+
+  geom_abline(intercept = reg1$coefficients[1], slope = reg1$coefficients[2])
+```
+
+```{r}
+reg2.1 <- lm(y ~ x, data = data %>% filter(x < 0))
+reg2.2 <- lm(y ~ x, data = data %>% filter(x > 0))
+
+data %>% ggplot(aes(x, y))+
+  geom_point()+
+  geom_abline(intercept = reg2.1$coefficients[1], slope = reg2.1$coefficients[2])+
+  geom_abline(intercept = reg2.2$coefficients[1], slope = reg2.2$coefficients[2])
+```
+
+Der Chow Test zeigt ganz klar, dass ein Strukturbruch vorliegt.
+```{r}
+SSR.R <- sum(resid(reg1)^2)
+SSR.U <- sum(resid(reg2.1)^2) + sum(resid(reg2.2)^2)
+
+Fstatistic <- ((SSR.R-SSR.U)/reg1$rank)/(SSR.U/(n - 2*reg1$rank))
+Fstatistic
+
+1-pf(Fstatistic, reg1$rank, n - 2*reg1$rank)
+```
+
+
+# Echte Daten
+```{r}
+data("Bwages")
+d <- Bwages
+?Bwages
+#d
+
+data("Caschool")
+#Caschool
+?Caschool
+
+data("Icecream")
+#Icecream
+?Icecream
+```
+
+```{r}
+Reg1 <- lm(formula = cons~price+temp+I(price*temp), data = Icecream)
+summary(Reg1)
+
+plot(Icecream$price ,Icecream$cons)
+
+Reg2 <- lm(formula = cons~temp, data = Icecream)
+summary(Reg2)
+```
+
+```{r}
+Reg2.1 <- lm(testscr~I(expnstu/1000)+compstu, data = Caschool)
+summary(Reg2.1)
+
+Reg2.2 <- lm(testscr~I(expnstu/1000), data = Caschool)
+summary(Reg2.2)
+
+```
+

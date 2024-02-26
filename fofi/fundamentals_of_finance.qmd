@@ -1,5 +1,5 @@
 ---
-title: Fundamentals of Finance
+title: "Fundamentals of Finance | Übersicht"
 ---
 
 Lorem Ipsum :)

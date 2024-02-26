@@ -1,5 +1,10 @@
 ---
 title: Household Finance
+format: 
+   html:
+     df-print: paged
+     fig-width: 5
+     fig-height: 3
 ---
 
 ## Derivatebewertung
