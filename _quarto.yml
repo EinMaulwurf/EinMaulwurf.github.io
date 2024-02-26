@@ -21,6 +21,8 @@ website:
           - fofi/household_finance.qmd
       - file: statistical-machine-learning/sml.qmd
         text: "Statistical Machine Learning" 
+      - file: masterseminar/Auswertung.Rmd
+        text: "Masterseminar"         
 
 format:
   html:

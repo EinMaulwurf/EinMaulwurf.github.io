@@ -49,5 +49,11 @@
   },
   "ewf/ewf-uebungen.qmd": {
     "ewf-uebungen.html": "44fc40be"
+  },
+  "masterseminar/Auswertung.Rmd": {
+    "Auswertung.html": "26d11aa4"
+  },
+  "masterseminar/Refinitiv_API.ipynb": {
+    "Refinitiv_API.html": "ef3b3fa5"
   }
 }
