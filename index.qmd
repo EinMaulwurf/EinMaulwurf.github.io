@@ -4,6 +4,6 @@ title: "Home"
 
 ![](maulwurf.png){width=40%}
 
-> Diese Seite habe ich erstellt, um meine Mitschriften aus der Uni zu teilen. Falls Euch Fehler auffallen, erstellt gerne ein Issue auf Github.
+Diese Seite habe ich erstellt, um meine Mitschriften aus der Uni zu teilen. Falls Euch Fehler auffallen, erstellt gerne ein Issue auf Github.
 
 Das [GitHub](https://github.com/EinMaulwurf/EinMaulwurf.github.io) Repository dieser Seite.

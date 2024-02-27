@@ -6,6 +6,7 @@ website:
   favicon: "maulwurf.png"
   sidebar:
     style: "docked"
+    collapse-level: 1
     contents:
       - section: "Empirische Wirtschaftsforschung"
         contents:
@@ -23,6 +24,12 @@ website:
         text: "Statistical Machine Learning" 
       - file: masterseminar/Auswertung.Rmd
         text: "Masterseminar"         
+      - section: "Projekt Immobilienmarkt"
+        contents: 
+          - immoprojekt/uebersicht.Rmd
+          - immoprojekt/git-tutorial.md
+          - immoprojekt/cleaning.Rmd
+          - immoprojekt/auswertung.Rmd
 
 format:
   html:

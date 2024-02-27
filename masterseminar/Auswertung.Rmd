@@ -153,7 +153,8 @@ data_returns
 
 data_ipo_raw
 
-vtable::sumtable(data_ipo_raw %>% filter(!is.na(return)), add.median = TRUE, out = "return")
+vtable::sumtable(data_ipo_raw %>% filter(!is.na(return)), add.median = TRUE, out = "return") %>%
+  group_by_all() # for better quarto rendering, dont know why that is
 
 mcor <- data_ipo_raw %>% 
   ungroup() %>%
@@ -167,16 +168,18 @@ mcor[upper.tri(mcor)] <- NA
 
 mcor %>%
   round(2) %>%
-  data.frame()
+  as_tibble() %>%
+  group_by_all() # for better quarto rendering, dont know why that is
 ```
 
 ```{r}
 # Tables for presentation
 
-c('notNA(x)','mean(x)','sd(x)','min(x)','pctile(x)[25]','pctile(x)[75]','max(x)')
+#c('notNA(x)','mean(x)','sd(x)','min(x)','pctile(x)[25]','pctile(x)[75]','max(x)')
 
 vtable::sumtable(data_ipo_raw %>% filter(!is.na(return)), out = "return", 
-                 summ = c('notNA(x)','mean(x)','pctile(x)[25]','pctile(x)[50]','pctile(x)[75]'))
+                 summ = c('notNA(x)','mean(x)','pctile(x)[25]','pctile(x)[50]','pctile(x)[75]')) %>%
+  group_by_all() # for better quarto rendering, dont know why that is
 
 ```
 
@@ -253,7 +256,22 @@ data_ipo_raw %>%
 
 
 
-## Underpricing (very short term)
+# Underpricing (very short term)
+
+Im ersten Schritt wird das kurzfristige Underpricing am Tag des IPOs berechnet. Dafür wird die IPO-Rendite $r_{i,\text{IPO}}$ für jedes Wertpapier $i$ wie folgt bestimmt:
+
+$$
+r_{i,\text{IPO}} = \frac{\text{Closing Price}_i}{\text{Offer Price}_i} - 1
+$$
+
+Wir sind jedoch mehr am marktadjustierten Underpricing interessiert. Dabei wird von der Rendite des ersten Tages die Rendite des bzw. eines Marktindexes $r_{M}$ für den jeweiligen IPO-Tag abgezogen. Somit sollen tagesspezifische Einflüsse auf den IPO ausgeglichen werden. Das Ergebnis ist das sogenannte Adjusted-Underpricing $r_{i,\text{IPO}-adj.}$ für Wertpapier $i$ am IPO-Tag.
+
+$$
+r_{i,\text{IPO}-adj.} = r_{i,\text{IPO}} - r_{M}
+$$
+
+Als Marktindex haben wir uns für den FTSE AIM All-Share Index entschieden. Dieser bildet die Marktbewegung einer Vielzahl von an der AIM gelisteten Unternehmen ab und ist somit am besten geeignet, für spezifische Einflüsse auf Unternehmen dieses Marktes zu korrigieren.
+
 ```{r, fig.width=5, fig.height=3, cache=TRUE}
 # Underpricing by year
 data_underpricing <- data_ipo_raw %>%
@@ -317,6 +335,14 @@ data_ipo_raw %>%
 #ggsave("01_Abbildungen/underpricing_year_presentation.png", plot = last_plot(), width = 4, height = 3)
 ```
 
+Es ergibt sich das folgende Regressionsmodell:
+
+$$
+\begin{aligned}
+r_{i,\text{IPO}-adj.} = \beta_0 &+ \beta_1 \cdot \text{proceeds}_i + \beta_2 \cdot \text{offer-price}_i + \beta_3 \cdot \text{pe}_i + \beta_4 \cdot \text{pb}_i \\
+&+ \beta_5 \cdot \text{EBITDA}_i + \beta_6 \cdot \text{age}_i + \epsilon_i
+\end{aligned}
+$$
 
 ```{r}
 # Regression
@@ -389,7 +415,7 @@ reg_underpricing_3 <- lm(formula = adjusted_return ~ proceeds + offer_price + pe
 #summary(reg_underpricing_3)
 
 #stargazer(reg_underpricing_1, reg_underpricing_2, reg_underpricing_3, align = TRUE)
-huxreg(reg_underpricing_1, reg_underpricing_2, reg_underpricing_3)
+huxreg(reg_underpricing_1, reg_underpricing_2, reg_underpricing_3, error_pos = "right")
 ```
 
 ```{r}
@@ -402,7 +428,7 @@ reg_underpricing_comp <- list(reg_underpricing_1, reg_underpricing_1_smx)
 
 #stargazer(reg_underpricing_comp, align = TRUE) %>%
 #  cat()
-huxreg(reg_underpricing_1_smx)
+huxreg(reg_underpricing_1_smx, error_pos = "right")
 ```
 
 ```{r}
@@ -412,10 +438,27 @@ huxreg(reg_underpricing_1_smx)
 ```
 
 
-## Longer term performance
-### short term underperformance
-As measured with the Cumulative Average Return (CAR)
-Day 2 to 31
+# Longer term performance
+## short term underperformance
+
+Für die Analyse der kurzfristigen Underperformance wird die Rendite in den ersten 30 Tagen nach dem IPO betrachtet. Dafür wird zuerst die Abnormal-Return (AR) jedes Wertpapiers $i$ für Tag $d$ bestimmt. $d$ beschreibt dabei die Anzahl der Tage nach dem IPO, wobei der IPO-Tag auf 1 gesetzt wird. Damit lässt sich nun die Average-Abnormal-Return (AAR) für Tag $d$ als Durchschnitt bestimmen.
+
+$$
+\begin{aligned}
+AR_{i,d} &= r_{i,d} - r_{M,d} \\
+AAR_{d} &= \frac{1}{N} \sum_{i=1}^{N} AR_{i,d}
+\end{aligned}
+$$
+
+Zum Abschluss wird die Cumulative-Abnormal-Return (CAR) sowie Cumulative-Average-Abnormal-Return (CAAR) für die ersten 30 Tage – ohne den IPO Tag – berechnet:
+
+$$
+\begin{aligned}
+CAR_i &= \sum_{d=2}^{31} AR_{i,d} \\
+CAAR &= \frac{1}{N} \sum_{i=1}^{N} CAR_{i}
+\end{aligned}
+$$
+
 ```{r}
 # Merging AIM index to data_returns
 data_returns_index <- data_returns %>%
@@ -451,7 +494,8 @@ CAAR <- data_returns_index %>%
 # Recreating Table II from Ritter1991
 CAAR %>%
   mutate(aar = aar * 100,
-         caar = caar * 100)
+         caar = caar * 100) %>%
+  group_by_all() # for better quarto rendering, dont know why that is
 #  kbl(
 #    format = "latex",
 #    digits = 2,
@@ -491,7 +535,7 @@ data_returns_index %>%
 #ggsave(filename = "01_Abbildungen/CAR_underperformance.pdf", plot = last_plot(), width = 5, height = 3)
 ```
 
-```{r, fig.width=4, fig.height=3}
+```{r, fig.width=4, fig.height=3, eval = FALSE}
 # CAR plot presentation
 
 data_returns_index %>%
@@ -521,6 +565,14 @@ data_returns_index %>%
 #ggsave(filename = "01_Abbildungen/CAR_underperformance_presentation.png", plot = last_plot(), width = 4, height = 3)
 ```
 
+Anschließend stellen wir ein Regressionsmodell mit der CAR als abhängige Variable auf. Als erklärende Variablen werden die gleichen Variablen wie bei der Regression zum Underpricing verwendet. Zusätzlich wird das Underpricing selbst als erklärende Variable in die Regression aufgenommen.
+
+$$
+\begin{aligned}
+\text{car}_{D,i} = \beta_0 &+ \beta_1 \cdot \text{proceeds}_i + \beta_2 \cdot \text{offer-price}_i + \beta_3 \cdot \text{pe}_i + \beta_4 \cdot \text{pb}_i \\
+&+ \beta_5 \cdot \text{EBITDA}_i + \beta_6 \cdot \text{age}_i + \beta_7 \cdot \text{underpricing}_i + \epsilon_i
+\end{aligned}
+$$
 
 ```{r}
 # Regression CAR
@@ -585,7 +637,7 @@ reg_car_30_mean_filled <- data_reg_car %>%
 reg_car <- list(reg_car_5, reg_car_5_mean_filled, reg_car_20, reg_car_20_mean_filled, reg_car_30, reg_car_30_mean_filled)
 #stargazer(reg_car, align = TRUE, omit.stat=c("f", "ser")) # old
 #stargazer(reg_car, align = TRUE, df = FALSE, column.sep.width = "1pt")
-huxreg(reg_car)
+huxreg(reg_car, error_pos = "right")
 ```
 
 ```{r}
@@ -654,7 +706,7 @@ reg_car_smx <- list(reg_car_5, reg_car_5_smx, reg_car_20, reg_car_20_smx, reg_ca
 
 #stargazer(reg_car_smx, align = TRUE, df = FALSE, column.sep.width = "1pt") %>%
 #  cat()
-huxreg(reg_car_smx)
+huxreg(reg_car_smx, error_pos = "right")
 ```
 
 ```{r}
@@ -684,13 +736,27 @@ data_returns_index %>%
 ```
 
 
-### long term underperformance
-As measured by the buy-and-hold-abnormal-return (BHAR)
+## long term underperformance
+
+Die langfristige Underperformance wird anhand der Buy-And-Hold-Abnormal-Return (BHAR) bzw Buy-And-Hold-Average-Abnormal-Return (BHAAR) berechnet:
+
 $$
-\text{BHAR} = \frac{1}{N} \sum_{i=1}^N \left( \prod_{t=t_i}^{T_i} (1+R_{it}) -1 \right) - \left( \prod_{t=t_i}^{T_i} (1+ \mathbf{E}[R_{it}]) -1 \right)
+\begin{aligned}
+BHAR_{i,M} &= \left( \prod_{m=1}^{M} (1+r_{i,m}) -1 \right) - \left( \prod_{m=1}^{M} (1+ \mathbf{E}[r_{i,m}]) -1 \right) \\
+BHAAR_{M} &= \frac{1}{N} \sum_{i=1}^N BHAR_i
+\end{aligned}
+$$
+Dabei ist $R_{it}$ die um Dividenden bereinigte Rendite des Wertpapiers $i$ im Monat $m$ nach dem IPO, $N$ die Anzahl der Wertpapiere, $M$ die Anzahl der Monate in der Betrachtung (für die Regression entsprechend 12, 36 oder 60) und $\mathbf{E}[r_{i,m}]$ die erwartete Rendite in Monat $m$, welche durch den FTAIS modelliert wird. Da uns tägliche und nicht monatliche Renditen vorliegen, werden zuerst die monatlichen Renditen nach dem folgenden Schema gebildet:
+
+$$
+\begin{aligned}
+r_{i,m=1} &= \prod_{d=2}^{22} (1 + r_{i,d}) - 1 \\
+r_{i,m=2} &= \prod_{d=23}^{44} (1 + r_{i,d}) - 1 \\
+r_{i,m=3} &= …
+\end{aligned}
 $$
 
-where $R_{it}$ is the return on security $i$ in month $t$ adjusted for dividends, $N$ is the number of securities, $T$ is the number of months (12, 36, 60), $t_i$ is the date of the closing price on the first day of trading and $\mathbf{E}[R_{it}]$ is the expected return.
+Ein Monat ist dabei immer als 21 aufeinander folgende Handelstage definiert. Tag $d = 1$ wird ausgelassen, da es sich dabei um den IPO-Tag handelt. Dieser wird bereits beim Thema Underpricing genauer betrachtet. Die gleiche Berechnung wird für den FTAIS Index durchgeführt.
 
 ```{r}
 # Calculating Buy-Hold-Abnormal-Returns (BHAR)
@@ -728,7 +794,8 @@ bhar %>%
   filter(trading_month %in% c(seq(from = 0, to = 60, by = 6))) %>%
   mutate(mean_bhar = mean_bhar * 100,
          median_bhar = median_bhar * 100,
-         share_negative = share_negative * 100)
+         share_negative = share_negative * 100) %>%
+  group_by_all() # for better quarto rendering, dont know why that is
 #  kbl(
 #    format = "latex",
 #    toprule = "\\hline \\hline",
@@ -750,16 +817,17 @@ bhar %>%
          median_bhar = median_bhar * 100,
          share_negative = share_negative * 100) %>%
   select(-c(p_value, share_negative)) %>%
-  kbl(
-    format = "latex",
-    toprule = "\\hline \\hline",
-    midrule = "\\hline",
-    bottomrule = "\\hline \\hline",
-    booktabs = T,
-    digits = 2,
-    #linesep = c("", "", "", "", "", "\\addlinespace")
-  ) %>%
-  cat()
+  group_by_all() # for better quarto rendering, dont know why that is
+#  kbl(
+#    format = "latex",
+#    toprule = "\\hline \\hline",
+#    midrule = "\\hline",
+#    bottomrule = "\\hline \\hline",
+#    booktabs = T,
+#    digits = 2,
+#    #linesep = c("", "", "", "", "", "\\addlinespace")
+#  ) %>%
+#  cat()
 
 bhar %>%
   filter(trading_month %in% c(seq(from = 0, to = 60, by = 1))) %>%
@@ -797,6 +865,14 @@ bhar_complete %>%
   theme_bw()
 ```
 
+Schließlich untersuchen wir, ob es einen Zusammenhang zwischen Underpricing und Underperformance gibt. Dazu verwenden wir ein Regressionsmodell, in dem die langfristige Underperformance (BHAR) durch die Variablen, die Bereits in der Regression zum Underpricing verwendet wurden, erklärt wird. Zusätzlich wird das Underpricing selbst als Variable mit aufgenommen.
+
+$$
+\begin{aligned}
+\text{bhar}_{M,i} = \beta_0 &+ \beta_1 \cdot \text{proceeds}_i + \beta_2 \cdot \text{offer-price}_i + \beta_3 \cdot \text{pe}_i + \beta_4 \cdot \text{pb}_i \\
+&+ \beta_5 \cdot \text{EBITDA}_i + \beta_6 \cdot \text{age}_i + \beta_7 \cdot \text{underpricing}_i + \epsilon_i
+\end{aligned}
+$$
 
 ```{r}
 # Regression BHAR
@@ -850,7 +926,7 @@ reg_bhar_60_mean_filled <- bhar_complete %>%
 reg_bhar <- list(reg_bhar_12, reg_bhar_12_mean_filled, reg_bhar_36, reg_bhar_36_mean_filled, reg_bhar_60, reg_bhar_60_mean_filled)
 #stargazer(reg_bhar, align = TRUE, omit.stat=c("f", "ser")) # old
 #stargazer(reg_bhar, align = TRUE, df = FALSE, column.sep.width = "1pt")
-huxreg(reg_bhar)
+huxreg(reg_bhar, error_pos = "right")
 ```
 
 ```{r}
@@ -922,7 +998,7 @@ reg_bhar_60_mean_filled_smx <- bhar_complete_smx %>%
 reg_bhar_smx <- list(reg_bhar_12, reg_bhar_12_smx, reg_bhar_36, reg_bhar_36_smx, reg_bhar_60, reg_bhar_60_smx)
 #stargazer(reg_bhar_smx, align = TRUE, df = FALSE, column.sep.width = "1pt") %>%
 #  cat()
-huxreg(reg_bhar_smx)
+huxreg(reg_bhar_smx, error_pos = "right")
 ```
 
 ```{r}

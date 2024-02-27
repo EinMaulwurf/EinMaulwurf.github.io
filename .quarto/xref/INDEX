@@ -55,5 +55,20 @@
   },
   "masterseminar/Refinitiv_API.ipynb": {
     "Refinitiv_API.html": "ef3b3fa5"
+  },
+  "immoprojekt/cleaning.Rmd": {
+    "cleaning.html": "97af95f1"
+  },
+  "immoprojekt/auswertung.md": {
+    "auswertung.html": "d29b58da"
+  },
+  "immoprojekt/auswertung.Rmd": {
+    "auswertung.html": "2ffb67ae"
+  },
+  "immoprojekt/git-tutorial.md": {
+    "git-tutorial.html": "ff5d40a2"
+  },
+  "immoprojekt/uebersicht.Rmd": {
+    "uebersicht.html": "06b8739a"
   }
 }
