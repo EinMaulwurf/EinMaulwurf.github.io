@@ -1,5 +1,5 @@
 ---
-title: Household Finance
+title: "Household Finance"
 format: 
    html:
      df-print: paged

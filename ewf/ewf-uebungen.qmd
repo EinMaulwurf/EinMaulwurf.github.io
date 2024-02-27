@@ -1,5 +1,5 @@
 ---
-title: "EWF Übungen"
+title: "Übungen"
 ---
 
 ```{r}

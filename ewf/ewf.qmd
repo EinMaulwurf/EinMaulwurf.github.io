@@ -1,5 +1,5 @@
 ---
-title: "EWF | Übersicht"
+title: "Übersicht"
 ---
 
 Lorem Ipsum :)

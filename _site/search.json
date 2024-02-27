@@ -285,34 +285,34 @@
   {
     "objectID": "ewf/ewf-uebungen.html",
     "href": "ewf/ewf-uebungen.html",
-    "title": "EWF Übungen",
+    "title": "Übungen",
     "section": "",
     "text": "library(tidyverse)\nlibrary(gridExtra)",
     "crumbs": [
       "Empirische Wirtschaftsforschung",
-      "EWF Übungen"
+      "Übungen"
     ]
   },
   {
     "objectID": "ewf/ewf-uebungen.html#übung-2",
     "href": "ewf/ewf-uebungen.html#übung-2",
-    "title": "EWF Übungen",
+    "title": "Übungen",
     "section": "Übung 2",
     "text": "Übung 2\nInstallieren Sie in R das Package Ecdat und laden Sie den Datensatz Caschool. Dieser Datensatz enthält Informationen über 420 amerikanische Schulen. Es soll der Zusammenhang zwischen der durchschnittlich erreichten Punktzahl im Test (testscr) und der Anzahl der Schüler pro Lehrer (str) sowie der Anzahl der zur Verfügung stehenden Computer je Schüler (compstu) mittels Regressionsanalyse untersucht werden. a) Berechnen und interpretieren Sie mit Hilfe der Funktionen lm() und coef() den OLS-Schätzer für das Regressionsmodell \\(\\text{testscr}_i = \\beta_1 + \\beta_2 \\cdot \\text{str}_i + \\beta_3 \\cdot \\text{compstu}_i\\) b) Wie verändern sich die Schätzergebnisse, wenn alle Beobachtungen von testscr bzw. str mit dem Faktor 10 multipliziert werden? c) Geben Sie die Effekte der Regressoren aus a) in Standardabweichungen an. Interpretieren Sie die Ergebnisse. d) Verifizieren Sie für \\(\\beta_2\\) das Ergebnis aus Aufgabe 2d).\n\na)\n\n# Wir laden das Package und den Datensatz in `D`\nlibrary(Ecdat)\n\nLoading required package: Ecfun\n\n\n\nAttaching package: 'Ecfun'\n\n\nThe following object is masked from 'package:base':\n\n    sign\n\n\n\nAttaching package: 'Ecdat'\n\n\nThe following object is masked from 'package:datasets':\n\n    Orange\n\ndata(Caschool)\nD &lt;- Caschool\n\n# Wir berechnen das Regressionsmodell\nR4 &lt;- lm(testscr ~ str + I(100*compstu), data=D) \ncoef(R4)\n\n     (Intercept)              str I(100 * compstu) \n     676.5829650       -1.5928058        0.6515992 \n\n\nWir können das Modell auch teilweise visualisieren und mit den tatsächlichen Daten vergleichen.\n\nnewdata &lt;- expand_grid(str = seq(from = 14, to = 27, by = 0.1),\n                      compstu = seq(from = 0, to = 0.4, by = 0.01)) %&gt;%\n  mutate(testscr = predict(R4, newdata = .))\n\np1 &lt;- ggplot()+\n  geom_tile(data = newdata, aes(x = str, y = compstu, fill = testscr))+\n  scale_fill_viridis_c()+\n  theme_bw()+\n  theme(legend.position = \"top\")\n\np2 &lt;- ggplot()+\n  geom_point(data = D, aes(x = str, y = compstu, color = testscr))+\n  scale_color_viridis_c()+\n  theme_bw()+\n  theme(legend.position = \"top\")\n\ngrid.arrange(p2, p1, nrow = 1)",
     "crumbs": [
       "Empirische Wirtschaftsforschung",
-      "EWF Übungen"
+      "Übungen"
     ]
   },
   {
     "objectID": "ewf/ewf-uebungen.html#b",
     "href": "ewf/ewf-uebungen.html#b",
-    "title": "EWF Übungen",
+    "title": "Übungen",
     "section": "b)",
     "text": "b)\n\nR5 &lt;- lm( 10*testscr ~ str + I(100*compstu), data=D)\ncoef(R5)\n\n     (Intercept)              str I(100 * compstu) \n     6765.829650       -15.928058         6.515992",
     "crumbs": [
       "Empirische Wirtschaftsforschung",
-      "EWF Übungen"
+      "Übungen"
     ]
   },
   {
@@ -896,12 +896,12 @@
   {
     "objectID": "fofi/fundamentals_of_finance.html",
     "href": "fofi/fundamentals_of_finance.html",
-    "title": "Fundamentals of Finance | Übersicht",
+    "title": "Übersicht",
     "section": "",
     "text": "Lorem Ipsum :)",
     "crumbs": [
       "Fundamentals of Finance",
-      "Fundamentals of Finance | Übersicht"
+      "Übersicht"
     ]
   },
   {
@@ -925,12 +925,12 @@
   {
     "objectID": "ewf/ewf.html",
     "href": "ewf/ewf.html",
-    "title": "EWF | Übersicht",
+    "title": "Übersicht",
     "section": "",
     "text": "Lorem Ipsum :)",
     "crumbs": [
       "Empirische Wirtschaftsforschung",
-      "EWF | Übersicht"
+      "Übersicht"
     ]
   },
   {
@@ -1101,56 +1101,56 @@
   {
     "objectID": "ewf/ewf-klausurvorbereitung.html",
     "href": "ewf/ewf-klausurvorbereitung.html",
-    "title": "EWF Klausurvorbereitung",
+    "title": "Klausurvorbereitung",
     "section": "",
     "text": "Libraries\nlibrary(MASS)\nlibrary(lmtest)\nlibrary(Ecdat)\nlibrary(sur)\nlibrary(plotly)\nlibrary(tidyverse)\nlibrary(gridExtra)",
     "crumbs": [
       "Empirische Wirtschaftsforschung",
-      "EWF Klausurvorbereitung"
+      "Klausurvorbereitung"
     ]
   },
   {
     "objectID": "ewf/ewf-klausurvorbereitung.html#einfache-regression",
     "href": "ewf/ewf-klausurvorbereitung.html#einfache-regression",
-    "title": "EWF Klausurvorbereitung",
+    "title": "Klausurvorbereitung",
     "section": "Einfache Regression",
-    "text": "Einfache Regression\n\nn &lt;- 40\nquadratmeter &lt;- seq(n)\npreis &lt;- rnorm(n,0+3*quadratmeter, 40)\ndata &lt;- data.frame(quadratmeter, preis)\n\na1 &lt;- lm(preis~quadratmeter)\nsummary(a1)\n\n\nCall:\nlm(formula = preis ~ quadratmeter)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-93.610 -27.559  -5.168  26.071  96.820 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)    9.1671    14.1954   0.646    0.522    \nquadratmeter   2.9912     0.6034   4.957 1.52e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 44.05 on 38 degrees of freedom\nMultiple R-squared:  0.3927,    Adjusted R-squared:  0.3768 \nF-statistic: 24.58 on 1 and 38 DF,  p-value: 1.516e-05\n\ndata %&gt;% ggplot(aes(quadratmeter, preis))+\n  geom_point()+\n  stat_function(fun = function(x)  {a1$coefficients[1] + a1$coefficients[2]*x})",
+    "text": "Einfache Regression\n\nn &lt;- 40\nquadratmeter &lt;- seq(n)\npreis &lt;- rnorm(n,0+3*quadratmeter, 40)\ndata &lt;- data.frame(quadratmeter, preis)\n\na1 &lt;- lm(preis~quadratmeter)\nsummary(a1)\n\n\nCall:\nlm(formula = preis ~ quadratmeter)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-129.596  -21.767    3.121   21.750   84.930 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   -12.095     13.832  -0.874    0.387    \nquadratmeter    2.885      0.588   4.908 1.77e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 42.92 on 38 degrees of freedom\nMultiple R-squared:  0.3879,    Adjusted R-squared:  0.3718 \nF-statistic: 24.08 on 1 and 38 DF,  p-value: 1.771e-05\n\ndata %&gt;% ggplot(aes(quadratmeter, preis))+\n  geom_point()+\n  stat_function(fun = function(x)  {a1$coefficients[1] + a1$coefficients[2]*x})",
     "crumbs": [
       "Empirische Wirtschaftsforschung",
-      "EWF Klausurvorbereitung"
+      "Klausurvorbereitung"
     ]
   },
   {
     "objectID": "ewf/ewf-klausurvorbereitung.html#heteroskedastizität",
     "href": "ewf/ewf-klausurvorbereitung.html#heteroskedastizität",
-    "title": "EWF Klausurvorbereitung",
+    "title": "Klausurvorbereitung",
     "section": "Heteroskedastizität",
-    "text": "Heteroskedastizität\nGenerierung von Heteroskedastizität und Verteilung der Residuen\n\nn2 &lt;- 10000\nx &lt;- runif(n2, min = 0, max = 10)\ny &lt;- rnorm(n2, mean = 50+3*x, sd = 5+2*x)\ndf1 &lt;- data.frame(x, y)\ndf1 %&gt;%\n  ggplot(aes(x, y))+\n  geom_point(alpha = .5, size = .5)\n\n\n\n\n\n\n\na2 &lt;- lm(y~x)\nsummary(a2)\n\n\nCall:\nlm(formula = y ~ x)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-77.509  -8.641   0.128   8.870  85.439 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 49.38793    0.31810  155.26   &lt;2e-16 ***\nx            3.13481    0.05483   57.17   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 15.9 on 9998 degrees of freedom\nMultiple R-squared:  0.2464,    Adjusted R-squared:  0.2463 \nF-statistic:  3268 on 1 and 9998 DF,  p-value: &lt; 2.2e-16\n\na2 %&gt;% ggplot(aes(x=a2$residuals))+\n  geom_density()+\n  stat_function(fun = function(x){dnorm(x, mean = mean(a2$residuals), sd = sd(a2$residuals))}, linetype = \"dashed\")\n\n\n\n\n\n\n\n\nDie Residuen (durchgezogene Linie) sind nicht normalverteilt (gestrichelte Linie)",
+    "text": "Heteroskedastizität\nGenerierung von Heteroskedastizität und Verteilung der Residuen\n\nn2 &lt;- 10000\nx &lt;- runif(n2, min = 0, max = 10)\ny &lt;- rnorm(n2, mean = 50+3*x, sd = 5+2*x)\ndf1 &lt;- data.frame(x, y)\ndf1 %&gt;%\n  ggplot(aes(x, y))+\n  geom_point(alpha = .5, size = .5)\n\n\n\n\n\n\n\na2 &lt;- lm(y~x)\nsummary(a2)\n\n\nCall:\nlm(formula = y ~ x)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-75.758  -8.876  -0.077   8.950  80.670 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 50.00780    0.32685  153.00   &lt;2e-16 ***\nx            3.04485    0.05655   53.84   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 16.17 on 9998 degrees of freedom\nMultiple R-squared:  0.2248,    Adjusted R-squared:  0.2247 \nF-statistic:  2899 on 1 and 9998 DF,  p-value: &lt; 2.2e-16\n\na2 %&gt;% ggplot(aes(x=a2$residuals))+\n  geom_density()+\n  stat_function(fun = function(x){dnorm(x, mean = mean(a2$residuals), sd = sd(a2$residuals))}, linetype = \"dashed\")\n\n\n\n\n\n\n\n\nDie Residuen (durchgezogene Linie) sind nicht normalverteilt (gestrichelte Linie)",
     "crumbs": [
       "Empirische Wirtschaftsforschung",
-      "EWF Klausurvorbereitung"
+      "Klausurvorbereitung"
     ]
   },
   {
     "objectID": "ewf/ewf-klausurvorbereitung.html#beispiel-einer-fehlehnden-binärvariable",
     "href": "ewf/ewf-klausurvorbereitung.html#beispiel-einer-fehlehnden-binärvariable",
-    "title": "EWF Klausurvorbereitung",
+    "title": "Klausurvorbereitung",
     "section": "Beispiel einer fehlehnden Binärvariable",
-    "text": "Beispiel einer fehlehnden Binärvariable\n\nn &lt;- 500\ndata &lt;- data.frame(x = runif(n, min = 0, max = 10),\n           group = c(1,2)) %&gt;%\n  mutate(group = as.factor(group),\n         y = if_else(group == 1, \n                     5 + 3*x + rnorm(n, 0, 2), \n                     20 + 3*x + rnorm(n, 0, 2)))\n\ndata %&gt;%\n  ggplot(aes(x = x, y = y, color = group))+\n  geom_point()\n\n\n\n\n\n\n\nreg1 &lt;- lm(y ~ x, data = data)\nreg1\n\n\nCall:\nlm(formula = y ~ x, data = data)\n\nCoefficients:\n(Intercept)            x  \n     12.020        3.101  \n\ndata.frame(resid = resid(reg1)) %&gt;%\n  ggplot(aes(x = resid))+\n  geom_histogram(bins = 30)\n\n\n\n\n\n\n\nreg2 &lt;- lm(y ~ x + group, data = data)\nreg2\n\n\nCall:\nlm(formula = y ~ x + group, data = data)\n\nCoefficients:\n(Intercept)            x       group2  \n      4.954        3.021       14.937  \n\ndata.frame(resid = resid(reg2)) %&gt;%\n  ggplot(aes(x = resid))+\n  geom_histogram(bins = 30)",
+    "text": "Beispiel einer fehlehnden Binärvariable\n\nn &lt;- 500\ndata &lt;- data.frame(x = runif(n, min = 0, max = 10),\n           group = c(1,2)) %&gt;%\n  mutate(group = as.factor(group),\n         y = if_else(group == 1, \n                     5 + 3*x + rnorm(n, 0, 2), \n                     20 + 3*x + rnorm(n, 0, 2)))\n\ndata %&gt;%\n  ggplot(aes(x = x, y = y, color = group))+\n  geom_point()\n\n\n\n\n\n\n\nreg1 &lt;- lm(y ~ x, data = data)\nreg1\n\n\nCall:\nlm(formula = y ~ x, data = data)\n\nCoefficients:\n(Intercept)            x  \n     12.127        3.065  \n\ndata.frame(resid = resid(reg1)) %&gt;%\n  ggplot(aes(x = resid))+\n  geom_histogram(bins = 30)\n\n\n\n\n\n\n\nreg2 &lt;- lm(y ~ x + group, data = data)\nreg2\n\n\nCall:\nlm(formula = y ~ x + group, data = data)\n\nCoefficients:\n(Intercept)            x       group2  \n      4.770        3.007       15.291  \n\ndata.frame(resid = resid(reg2)) %&gt;%\n  ggplot(aes(x = resid))+\n  geom_histogram(bins = 30)",
     "crumbs": [
       "Empirische Wirtschaftsforschung",
-      "EWF Klausurvorbereitung"
+      "Klausurvorbereitung"
     ]
   },
   {
     "objectID": "ewf/ewf-klausurvorbereitung.html#chow-test-für-strukturbruch",
     "href": "ewf/ewf-klausurvorbereitung.html#chow-test-für-strukturbruch",
-    "title": "EWF Klausurvorbereitung",
+    "title": "Klausurvorbereitung",
     "section": "Chow Test für Strukturbruch",
-    "text": "Chow Test für Strukturbruch\nWir generieren zuerst einen Datensatz mit einem Strukturbruch bei \\(x=0\\). Es soll nicht zu offensichtlich sein, damit der F-Test am Ende noch interessant bleibt.\n\nn &lt;- 200\n\nx1 &lt;- runif(n/2, min = -5, max = 0)\nx2 &lt;- runif(n/2, min = 0, max = 5)\n\ny1 &lt;- 5 + 1*x1 + rnorm(n/2, 0, 3)\ny2 &lt;- 5 + 3*x2 + rnorm(n/2, 0, 3)\n\ndata &lt;- data.frame(x = c(x1, x2), y = c(y1, y2))\n\ndata %&gt;%\n  ggplot(aes(x, y))+\n  geom_point()\n\n\n\n\n\n\n\n\nWir sehen, dass eine “naive” lineare Regression hier kein gutes Ergebnis bringt.\n\nreg1 &lt;- lm(y ~ x, data = data)\nsummary(reg1)\n\n\nCall:\nlm(formula = y ~ x, data = data)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-8.2495 -2.3860 -0.0936  2.4833 10.7891 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  7.97671    0.24627   32.39   &lt;2e-16 ***\nx            2.09353    0.08224   25.46   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 3.473 on 198 degrees of freedom\nMultiple R-squared:  0.766, Adjusted R-squared:  0.7648 \nF-statistic: 648.1 on 1 and 198 DF,  p-value: &lt; 2.2e-16\n\ndata %&gt;% ggplot(aes(x, y))+\n  geom_point()+\n  geom_abline(intercept = reg1$coefficients[1], slope = reg1$coefficients[2])\n\n\n\n\n\n\n\n\n\nreg2.1 &lt;- lm(y ~ x, data = data %&gt;% filter(x &lt; 0))\nreg2.2 &lt;- lm(y ~ x, data = data %&gt;% filter(x &gt; 0))\n\ndata %&gt;% ggplot(aes(x, y))+\n  geom_point()+\n  geom_abline(intercept = reg2.1$coefficients[1], slope = reg2.1$coefficients[2])+\n  geom_abline(intercept = reg2.2$coefficients[1], slope = reg2.2$coefficients[2])\n\n\n\n\n\n\n\n\nDer Chow Test zeigt ganz klar, dass ein Strukturbruch vorliegt.\n\nSSR.R &lt;- sum(resid(reg1)^2)\nSSR.U &lt;- sum(resid(reg2.1)^2) + sum(resid(reg2.2)^2)\n\nFstatistic &lt;- ((SSR.R-SSR.U)/reg1$rank)/(SSR.U/(n - 2*reg1$rank))\nFstatistic\n\n[1] 29.30689\n\n1-pf(Fstatistic, reg1$rank, n - 2*reg1$rank)\n\n[1] 7.322587e-12",
+    "text": "Chow Test für Strukturbruch\nWir generieren zuerst einen Datensatz mit einem Strukturbruch bei \\(x=0\\). Es soll nicht zu offensichtlich sein, damit der F-Test am Ende noch interessant bleibt.\n\nn &lt;- 200\n\nx1 &lt;- runif(n/2, min = -5, max = 0)\nx2 &lt;- runif(n/2, min = 0, max = 5)\n\ny1 &lt;- 5 + 1*x1 + rnorm(n/2, 0, 3)\ny2 &lt;- 5 + 3*x2 + rnorm(n/2, 0, 3)\n\ndata &lt;- data.frame(x = c(x1, x2), y = c(y1, y2))\n\ndata %&gt;%\n  ggplot(aes(x, y))+\n  geom_point()\n\n\n\n\n\n\n\n\nWir sehen, dass eine “naive” lineare Regression hier kein gutes Ergebnis bringt.\n\nreg1 &lt;- lm(y ~ x, data = data)\nsummary(reg1)\n\n\nCall:\nlm(formula = y ~ x, data = data)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-10.6720  -2.5064  -0.3898   1.9784   9.3851 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  7.91705    0.24203   32.71   &lt;2e-16 ***\nx            2.05774    0.08229   25.01   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 3.423 on 198 degrees of freedom\nMultiple R-squared:  0.7595,    Adjusted R-squared:  0.7583 \nF-statistic: 625.4 on 1 and 198 DF,  p-value: &lt; 2.2e-16\n\ndata %&gt;% ggplot(aes(x, y))+\n  geom_point()+\n  geom_abline(intercept = reg1$coefficients[1], slope = reg1$coefficients[2])\n\n\n\n\n\n\n\n\n\nreg2.1 &lt;- lm(y ~ x, data = data %&gt;% filter(x &lt; 0))\nreg2.2 &lt;- lm(y ~ x, data = data %&gt;% filter(x &gt; 0))\n\ndata %&gt;% ggplot(aes(x, y))+\n  geom_point()+\n  geom_abline(intercept = reg2.1$coefficients[1], slope = reg2.1$coefficients[2])+\n  geom_abline(intercept = reg2.2$coefficients[1], slope = reg2.2$coefficients[2])\n\n\n\n\n\n\n\n\nDer Chow Test zeigt ganz klar, dass ein Strukturbruch vorliegt.\n\nSSR.R &lt;- sum(resid(reg1)^2)\nSSR.U &lt;- sum(resid(reg2.1)^2) + sum(resid(reg2.2)^2)\n\nFstatistic &lt;- ((SSR.R-SSR.U)/reg1$rank)/(SSR.U/(n - 2*reg1$rank))\nFstatistic\n\n[1] 31.24959\n\n1-pf(Fstatistic, reg1$rank, n - 2*reg1$rank)\n\n[1] 1.660005e-12",
     "crumbs": [
       "Empirische Wirtschaftsforschung",
-      "EWF Klausurvorbereitung"
+      "Klausurvorbereitung"
     ]
   }
 ]

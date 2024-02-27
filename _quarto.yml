@@ -27,7 +27,6 @@ website:
       - section: "Projekt Immobilienmarkt"
         contents: 
           - immoprojekt/uebersicht.Rmd
-          - immoprojekt/git-tutorial.md
           - immoprojekt/cleaning.Rmd
           - immoprojekt/auswertung.Rmd
 

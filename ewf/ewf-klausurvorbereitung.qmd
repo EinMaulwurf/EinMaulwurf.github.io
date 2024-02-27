@@ -1,5 +1,5 @@
 ---
-title: "EWF Klausurvorbereitung"
+title: "Klausurvorbereitung"
 format: 
    html:
      df-print: paged
