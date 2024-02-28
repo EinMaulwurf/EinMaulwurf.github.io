@@ -228,6 +228,7 @@ Fstatistic
 
 
 # Echte Daten
+## Aus den Übungen
 ```{r}
 data("Bwages")
 d <- Bwages
@@ -261,4 +262,46 @@ Reg2.2 <- lm(testscr~I(expnstu/1000), data = Caschool)
 summary(Reg2.2)
 
 ```
+
+## Sterbedaten Deutschland
+Quelle: Genesis Tabelle 12613-0003
+```{r, message=FALSE, warning=FALSE}
+data <- read_csv2("/Users/sebastiangeis/Downloads/12613-0003_$F_flat (1).csv") %>%
+  janitor::clean_names() %>%
+  select(jahr = zeit, geschlecht = x2_auspraegung_code, alter = x3_auspraegung_code, anzahl = bev002_gestorbene_anzahl) %>%
+  mutate(geschlecht = str_extract(geschlecht, ".{1}$") %>% factor(),
+         alter = str_extract(alter, "\\d{3}$") %>% as.numeric(),
+         anzahl = as.numeric(anzahl)) %>%
+  drop_na()
+head(data)
+
+
+data_uncounted <- data %>%
+  uncount(anzahl)
+head(data_uncounted)
+```
+
+Der originale Datensatz gibt die Anzahl an Toten je Jahr, Alter und Geschlecht an. Wir transformieren den Datensatz, damit jede Zeile einer Person entspricht. Diese Datensatz hat dann `r nrow(data_uncounted)` Zeilen. Das ist sehr viel, daher verwenden wir für die Regressionen jeweils nur eine Stichprobe.
+
+```{r}
+data_uncounted %>%
+  group_by(jahr, geschlecht) %>%
+  summarise(alter = mean(alter)) %>%
+  ggplot(aes(x = jahr, y = alter, color = geschlecht))+
+  geom_line()
+
+reg1 <- lm(alter ~ jahr, data = data_uncounted %>% slice_sample(n = 100000))
+summary(reg1)
+
+reg2 <- lm(alter ~ jahr + geschlecht, data = data_uncounted %>% slice_sample(n = 100000))
+summary(reg2)
+
+data.frame(reg1 = reg1$residuals, reg2 = reg2$residuals) %>%
+  pivot_longer(cols = everything(), names_to = "model", values_to = "residuals") %>%
+  ggplot(aes(x = residuals, color = model))+
+  geom_density()
+```
+Betrachten wir den Plot mit dem durchschnittlichen Sterbealter, wird sofort klar, dass eine Binärvariable für das Geschlecht genutzt werden muss. In der Regression sehen wir dann, dass Frauen im Schnitt 6,6 Jahre länger leben als Männer.
+
+Allerdings ist der Unterschied im Residuenplot nicht eindeutig. Für Regression 1, also ohne Berücksichtigung des Geschlechts, hätten wir zwei "Gipfel" erwartet. Dies ist nicht der Fall. Außerdem müssen wir die Verteilungsannahme überdenken, da die Residuen offensichtlich nicht normalverteilt sint. Hieran ändert auch eine log-Transofrmation nichts (nicht dargestellt).
 
